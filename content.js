@@ -19,36 +19,45 @@ const CONFIG = {
   nombreAnpa: "ANPA Santa Uxía",
   nombreCentro: "CEIP Plurilingüe O Grupo",
   localidade: "Ribeira, A Coruña",
-  cursoEscolar: "2025-2026",
+  cursoEscolar: "2026-2027",
 
   // IMPORTANTE: confirmar teléfono, correo, horario e datos de pagamento antes de publicar.
   // Para o WhatsApp, pon o número completo con prefixo do país, sen espazos nin guións
   // Exemplo España: "34612345678"  (sen o +)
-  whatsappNumero: "34693649967",  // ← CAMBIAR polo número real da ANPA
+  whatsappNumero: "34693649967",
   email: "anpaogrupo@yahoo.es",
-  telefono: "",  // ← CAMBIAR ou deixar baleiro para non mostrar
+  telefono: "693 64 99 67",
   enderezo: "Avenida Miguel Rodríguez Bautista, 22, 15960 Ribeira",
   mapasLink: "https://maps.google.com/?q=CEIP+Plurilingüe+O+Grupo+Ribeira",
 
-  // URL canónica da web (para SEO). Cambia cando publiques en GitHub Pages
-  urlCanonica: "https://anpaogrupo.github.io",
+  // Dominio público da web
+  urlCanonica: "https://anpaogrupo.es",
+
+  // Identidade visual (ficheiros xa subidos á carpeta assets)
+  logoAnpa: "assets/logo-anpa-santa-uxia-alta-resolucion.png",
+  logoCentro: "assets/logo-ceip-o-grupo-alta-resolucion.png",
 
   // Horario de atención da ANPA (déixao baleiro se non está confirmado)
   horarioAtencion: "",  // Exemplo: "Luns e mércores de 9:00 a 10:00"
 
   // Web oficial do centro
-  webCentro: "https://www.edu.xunta.gal/centros/ceipogrupo/",
+  webCentro: "https://www.edu.xunta.gal/centros/ceipgruporibeira/",
   abalatLink: "https://www.edu.xunta.gal/espazoAbalar/",
+
+  // Redes sociais oficiais da ANPA
+  facebook: "https://www.facebook.com/people/Anpa-Santa-Ux%C3%ADa-do-CEIP-O-Grupo-de-Ribeira/100051818983434/?locale=es_ES",
+  instagram: "https://www.instagram.com/anpa.ceip.ogrupo/",
+  x: "https://x.com/AnpaOGrupo",
 };
 
 // ──────────────────────────────────────────────────────────────
 //  AVISO IMPORTANTE (banner destacado baixo o hero)
 // ──────────────────────────────────────────────────────────────
 const AVISO = {
-  visible: true,
+  visible: false,
   etiqueta: "Aviso importante",
-  titulo: "Aberto o prazo de inscrición",
-  texto: "Xa está dispoñible a programación de actividades extraescolares para o curso 2025-2026. Consulta as propostas e inscrí­bete antes de que se completen as prazas.",
+  titulo: "Preparando o curso 2026-2027",
+  texto: "Publicaremos aquí os próximos avisos e prazos de inscrición cando estean confirmados.",
   botonTexto: "Ver actividades",
   botonAccion: "actividades",  // "actividades", "eventos", "socios" ou unha URL
 };
@@ -63,16 +72,17 @@ const SOCIOS = {
   iban: "",  // Exemplo: "ES12 3456 7890 1234 5678 9012"
   titular: "",
   // Formulario descargable (pon a ruta ao ficheiro ou déixao baleiro)
-  formularioUrl: "assets/docs/formulario-alta-socios.pdf",  // ← subir o ficheiro real
+  formularioUrl: "",  // Engadir só cando o formulario real estea subido
 };
 
 // ──────────────────────────────────────────────────────────────
 //  ACTIVIDADES EXTRAESCOLARES
 //  Copia un bloque completo para engadir unha nova actividade
+//  Estes bloques son exemplos: mantelos ocultos ata confirmar os datos.
 // ──────────────────────────────────────────────────────────────
 const ACTIVIDADES = [
   {
-    visible: true,
+    visible: false,
     titulo: "Patinaxe",
     categoria: "Deporte",
     idadeRecomendada: "6-12 anos",
@@ -87,7 +97,7 @@ const ACTIVIDADES = [
     icono: "🛼",  // Emoji de respaldo se non hai imaxe
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Parkour",
     categoria: "Deporte",
     idadeRecomendada: "7-12 anos",
@@ -102,7 +112,7 @@ const ACTIVIDADES = [
     icono: "🏃",
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Ximnasia acrobática",
     categoria: "Deporte",
     idadeRecomendada: "5-11 anos",
@@ -117,7 +127,7 @@ const ACTIVIDADES = [
     icono: "🤸",
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Baloncesto",
     categoria: "Deporte",
     idadeRecomendada: "6-12 anos",
@@ -132,7 +142,7 @@ const ACTIVIDADES = [
     icono: "🏀",
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Fútbol",
     categoria: "Deporte",
     idadeRecomendada: "5-12 anos",
@@ -147,7 +157,7 @@ const ACTIVIDADES = [
     icono: "⚽",
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Baile moderno",
     categoria: "Música e baile",
     idadeRecomendada: "6-12 anos",
@@ -162,7 +172,7 @@ const ACTIVIDADES = [
     icono: "💃",
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Música divertida",
     categoria: "Música e baile",
     idadeRecomendada: "4-8 anos",
@@ -177,7 +187,7 @@ const ACTIVIDADES = [
     icono: "🎵",
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Inglés",
     categoria: "Idiomas",
     idadeRecomendada: "5-12 anos",
@@ -192,7 +202,7 @@ const ACTIVIDADES = [
     icono: "🇬🇧",
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Cociña infantil creativa",
     categoria: "Creatividade",
     idadeRecomendada: "6-12 anos",
@@ -207,7 +217,7 @@ const ACTIVIDADES = [
     icono: "🍳",
   },
   {
-    visible: true,
+    visible: false,
     titulo: "Obradoiros multidisciplinares",
     categoria: "Creatividade",
     idadeRecomendada: "4-12 anos",
@@ -232,7 +242,7 @@ const SERVIZOS = [
     id: "madrugadores",
     titulo: "Madrugadores",
     icono: "🌅",
-    descripcion: "Servizo de atención antes do inicio das clases para facilitar a conciliación das familias. O alumnado pode chegar ao centro antes do horario lectivo con supervisión de persoal cualificado.",
+    descripcion: "Servizo de atención antes do inicio das clases para facilitar a conciliación das familias. Consulta coa ANPA as condicións, horarios e prazas dispoñibles.",
     horario: "",  // Exemplo: "7:30–9:00"
     prezos: "",   // Exemplo: "Consultar"
     informacionExtra: "",
@@ -243,7 +253,7 @@ const SERVIZOS = [
     id: "comedor",
     titulo: "Comedor escolar",
     icono: "🍽️",
-    descripcion: "Servizo de comedor xestionado ou apoiado pola ANPA para facilitar a conciliación das familias. Menú variado e equilibrado adaptado ás necesidades do alumnado.",
+    descripcion: "Información para as familias sobre o servizo de comedor escolar. Consulta coa ANPA as condicións, horarios, menús e prazas dispoñibles.",
     horario: "",  // Exemplo: "14:00–16:00"
     prezos: "",
     menuUrl: "",  // Ruta ao PDF do menú mensual
@@ -268,10 +278,11 @@ const SERVIZOS = [
 //  EVENTOS E CARTEIS
 //  Copia un bloque completo para engadir un novo evento
 //  Formato de data: "AAAA-MM-DD" (ano-mes-día)
+//  Estes bloques son exemplos: mantelos ocultos ata confirmar os datos.
 // ──────────────────────────────────────────────────────────────
 const EVENTOS = [
   {
-    visible: true,
+    visible: false,
     destacado: true,
     titulo: "Festa das familias",
     fechaInicio: "2026-09-20",
@@ -284,20 +295,20 @@ const EVENTOS = [
     gratuitoSocios: true,
   },
   {
-    visible: true,
+    visible: false,
     destacado: false,
     titulo: "Reunión informativa de inicio de curso",
     fechaInicio: "2026-09-10",
     fechaFin: "",
     hora: "18:00",
     lugar: "Salón de actos do CEIP Plurilingüe O Grupo",
-    resumen: "Presentación das actividades, servizos e proxectos da ANPA para o curso 2025-2026. Resolución de dúbidas e benvida ás novas familias.",
+    resumen: "Presentación das actividades, servizos e proxectos da ANPA para o novo curso. Resolución de dúbidas e benvida ás novas familias.",
     cartel: "",
     inscripcion: "",
     gratuitoSocios: false,
   },
   {
-    visible: true,
+    visible: false,
     destacado: false,
     titulo: "Magosto da comunidade educativa",
     fechaInicio: "2025-11-07",
@@ -310,7 +321,7 @@ const EVENTOS = [
     gratuitoSocios: false,
   },
   {
-    visible: true,
+    visible: false,
     destacado: false,
     titulo: "Entroido 2026",
     fechaInicio: "2026-02-28",
@@ -331,11 +342,11 @@ const EVENTOS = [
 const DOCUMENTOS = [
   // Documentos da ANPA
   {
-    visible: true,
+    visible: false,
     tipo: "anpa",
     titulo: "Formulario de alta de socio/a",
     descripcion: "Formulario para facerse membro da ANPA Santa Uxía.",
-    url: "assets/docs/formulario-alta-socios.pdf",
+    url: "",
     icono: "📄",
   },
   {
@@ -384,7 +395,7 @@ const DOCUMENTOS = [
     tipo: "centro",
     titulo: "Web oficial do CEIP O Grupo",
     descripcion: "Páxina oficial do centro educativo na Xunta de Galicia.",
-    url: "https://www.edu.xunta.gal/centros/ceipogrupo/",
+    url: "https://www.edu.xunta.gal/centros/ceipgruporibeira/",
     icono: "🏫",
     externo: true,
   },
@@ -415,7 +426,7 @@ const FAQS = [
   {
     visible: true,
     pregunta: "Quen pode facerse socio/a da ANPA?",
-    resposta: "Calquera nai, pai ou titor/a legal de alumnado matriculado no CEIP Plurilingüe O Grupo pode asociarse á ANPA Santa Uxía. Tamén pode participar persoal do centro que así o desexe segundo os estatutos.",
+    resposta: "Poden asociarse as familias do alumnado matriculado no CEIP Plurilingüe O Grupo. Se tes algunha dúbida sobre a alta, contacta coa ANPA.",
   },
   {
     visible: true,
@@ -424,17 +435,17 @@ const FAQS = [
     destacada: true,  // Esta resposta aparece resaltada
   },
   {
-    visible: true,
+    visible: false,
     pregunta: "Canto custa asociarse?",
     resposta: "A cota anual é de 15 € por familia e curso escolar. Este importe contribúe a financiar as actividades, servizos e proxectos que a ANPA organiza para toda a comunidade educativa.",
   },
   {
     visible: true,
     pregunta: "Como podo inscribirme nunha actividade extraescolar?",
-    resposta: "As inscricións realízanse a través dos formularios publicados nesta web ou contactando directamente coa ANPA por WhatsApp ou correo electrónico. Os prazos e procedementos indícanse en cada actividade.",
+    resposta: "Cando se publique unha actividade, indicaremos nesta web o prazo e o procedemento de inscrición. Tamén podes consultar coa ANPA por WhatsApp ou correo electrónico.",
   },
   {
-    visible: true,
+    visible: false,
     pregunta: "As actividades son só para socios/as?",
     resposta: "A maioría das actividades están abertas a todo o alumnado do centro, aínda que os socios e socias adoitan ter prezos reducidos ou acceso preferente. Algunhas actividades específicas poden estar reservadas exclusivamente para membros da ANPA.",
   },
@@ -444,12 +455,12 @@ const FAQS = [
     resposta: "Podes solicitar información sobre ambos servizos contactando coa ANPA por WhatsApp ou correo electrónico. Indicarémosche os pasos, prazos e documentación necesaria en cada caso.",
   },
   {
-    visible: true,
+    visible: false,
     pregunta: "Como podo colaborar coa ANPA?",
     resposta: "Hai moitas formas de colaborar: axudando na organización de eventos, propoñendo actividades, aportando coñecementos ou experiencia profesional, ou simplemente participando nas reunións e iniciativas da asociación. Contacta connosco por WhatsApp e dinos como queres axudar.",
   },
   {
-    visible: true,
+    visible: false,
     pregunta: "Onde se publican os cambios de horario ou cancellacións?",
     resposta: "Os cambios e avisos importantes publícanse nesta web e comunícanse a través do Espazo Abalar e dos canais habituais de comunicación do centro. Recomendamos revisar regularmente esta web e as comunicacións oficiais do colexio.",
   },
