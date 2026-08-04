@@ -102,20 +102,20 @@ a:hover { text-decoration: underline; }
 }
 .header-inner {
   display: flex; align-items: center; gap: 16px;
-  height: 68px;
+  height: 76px;
 }
 .header-logo {
   display: flex; align-items: center; gap: 12px;
   text-decoration: none; flex-shrink: 0;
 }
 .logo-mark {
-  width: 46px; height: 46px; border-radius: 10px;
-  background: var(--blue); color: var(--white);
+  width: 52px; height: 62px; border-radius: 9px;
+  background: var(--white); color: var(--blue-dark);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.5rem; font-weight: 900; letter-spacing: -.5px;
   flex-shrink: 0; overflow: hidden;
 }
-.logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+.logo-mark img { width: 100%; height: 100%; object-fit: contain; }
 .logo-text { line-height: 1.15; }
 .logo-text strong {
   display: block; font-size: .95rem; font-weight: 800;
@@ -162,7 +162,7 @@ a:hover { text-decoration: underline; }
 /* Mobile nav */
 @media (max-width: 900px) {
   .site-nav {
-    display: none; position: fixed; inset: 68px 0 0 0;
+    display: none; position: fixed; inset: 76px 0 0 0;
     background: var(--white); flex-direction: column; align-items: stretch;
     padding: 20px; gap: 8px; z-index: 999;
     border-top: 2px solid var(--blue-pale);
@@ -690,11 +690,12 @@ a:hover { text-decoration: underline; }
 .footer-brand { display: flex; flex-direction: column; gap: 14px; }
 .footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .footer-logo-mark {
-  width: 42px; height: 42px; border-radius: 9px;
-  background: var(--blue); color: var(--white);
+  width: 54px; height: 66px; border-radius: 9px;
+  background: var(--white); color: var(--blue);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; font-weight: 900; flex-shrink: 0;
+  font-size: 1.2rem; font-weight: 900; flex-shrink: 0; overflow: hidden;
 }
+.footer-logo-mark img { width: 100%; height: 100%; object-fit: contain; }
 .footer-logo-text strong { display: block; font-size: .92rem; font-weight: 800; color: var(--white); }
 .footer-logo-text span { font-size: .72rem; color: rgba(255,255,255,.60); }
 .footer-brand p { font-size: .82rem; color: rgba(255,255,255,.65); line-height: 1.6; }
@@ -711,6 +712,32 @@ a:hover { text-decoration: underline; }
 .footer-contact-item { font-size: .85rem; color: rgba(255,255,255,.75); display: flex; align-items: flex-start; gap: 8px; }
 .footer-contact-item a { color: rgba(255,255,255,.75); }
 .footer-contact-item a:hover { color: var(--white); text-decoration: none; }
+
+.footer-community {
+  display: flex; align-items: center; justify-content: space-between; gap: 28px;
+  padding: 22px 0; border-top: 1px solid rgba(255,255,255,.12);
+}
+.footer-school { display: flex; align-items: center; gap: 16px; text-decoration: none; min-width: 0; }
+.footer-school > span, .social-links > span {
+  flex-shrink: 0; font-size: .72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .09em; color: rgba(255,255,255,.50);
+}
+.footer-school img { width: min(420px, 44vw); height: auto; display: block; border-radius: 6px; }
+.social-links { display: flex; align-items: center; gap: 12px; }
+.social-links-list { display: flex; gap: 8px; }
+.social-links a {
+  width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,.20); border-radius: 50%; color: var(--white);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+.social-links a[hidden] { display: none; }
+.social-links a:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); text-decoration: none; }
+.social-links svg { width: 19px; height: 19px; fill: currentColor; }
+@media (max-width: 768px) {
+  .footer-community { align-items: flex-start; flex-direction: column; }
+  .footer-school { width: 100%; flex-direction: column; align-items: flex-start; }
+  .footer-school img { width: min(100%, 520px); }
+}
 
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,.12); padding-top: 20px;

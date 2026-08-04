@@ -534,6 +534,31 @@
   }
 
   // ──────────────────────────────────────────────────────────────
+  //  LOGOS E REDES SOCIAIS
+  // ──────────────────────────────────────────────────────────────
+  function renderIdentidade() {
+    const logoAnpaHeader = el('logoAnpaHeader');
+    const logoAnpaFooter = el('logoAnpaFooter');
+    const logoCentroFooter = el('logoCentroFooter');
+    const footerSchoolLink = el('footerSchoolLink');
+
+    if (CONFIG.logoAnpa) {
+      if (logoAnpaHeader) logoAnpaHeader.src = CONFIG.logoAnpa;
+      if (logoAnpaFooter) logoAnpaFooter.src = CONFIG.logoAnpa;
+    }
+    if (CONFIG.logoCentro && logoCentroFooter) logoCentroFooter.src = CONFIG.logoCentro;
+    if (CONFIG.webCentro && footerSchoolLink) footerSchoolLink.href = CONFIG.webCentro;
+
+    document.querySelectorAll('[data-social]').forEach(function (link) {
+      const url = CONFIG[link.dataset.social];
+      if (url) {
+        link.href = url;
+        link.hidden = false;
+      }
+    });
+  }
+
+  // ──────────────────────────────────────────────────────────────
   //  FLOATING WHATSAPP
   // ──────────────────────────────────────────────────────────────
   function initFloatingWa() {
@@ -591,6 +616,7 @@
     renderDocumentos();
     renderFaq();
     renderContacto();
+    renderIdentidade();
     initFloatingWa();
     initHeroButtons();
     initSmoothScroll();
