@@ -24,7 +24,7 @@ const CONFIG = {
   // IMPORTANTE: confirmar teléfono, correo, horario e datos de pagamento antes de publicar.
   // Para o WhatsApp, pon o número completo con prefixo do país, sen espazos nin guións
   // Exemplo España: "34612345678"  (sen o +)
-  whatsappNumero: "34000000000",  // ← CAMBIAR polo número real da ANPA
+  whatsappNumero: "34693649967",  // ← CAMBIAR polo número real da ANPA
   email: "anpaogrupo@yahoo.es",
   telefono: "",  // ← CAMBIAR ou deixar baleiro para non mostrar
   enderezo: "Avenida Miguel Rodríguez Bautista, 22, 15960 Ribeira",
