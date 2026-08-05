@@ -169,8 +169,9 @@ const SERVIZOS = [
 const REDES = {
   foto1: "https://images.unsplash.com/photo-1607211851821-8be3cd6146f0?w=700&h=560&fit=crop&auto=format",
   foto1Alt: "Actividade creativa con pinturas",
-  foto2: "https://images.unsplash.com/photo-1780061492664-192370bfc7cf?w=700&h=460&fit=crop&auto=format",
-  foto2Alt: "Familias participando nunha actividade ao aire libre",
+  foto2: "assets/images/ogrupo.jpg",
+foto2Alt: "CEIP Plurilingüe O Grupo de Ribeira",
+  foto2Alt: "O colexio",
   foto3: "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=700&h=560&fit=crop&auto=format",
   foto3Alt: "Obradoiro artístico con nenas e nenos",
 };
