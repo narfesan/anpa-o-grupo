@@ -223,6 +223,65 @@
     const det    = $('sociosDet');
     if (precio && SOCIOS) precio.textContent = SOCIOS.cotaAnual || '20 €';
     if (det    && SOCIOS) det.textContent    = SOCIOS.cotaDetalle || 'por familia e curso escolar';
+
+    const altaCota = $('altaSocioCota');
+    const altaIban = $('altaSocioIban');
+    if (altaCota && SOCIOS) altaCota.textContent = SOCIOS.cotaAnual || '20 €';
+    if (altaIban && SOCIOS) altaIban.textContent = SOCIOS.iban || '';
+
+    const toggle = $('abrirAltaSocio');
+    const panel = $('altaSocioPanel');
+    if (toggle && panel) {
+      toggle.addEventListener('click', function () {
+        const abrir = panel.hidden;
+        panel.hidden = !abrir;
+        toggle.setAttribute('aria-expanded', String(abrir));
+        if (abrir) $('socioResponsable') && $('socioResponsable').focus();
+      });
+    }
+
+    const copiar = $('copiarIban');
+    if (copiar && SOCIOS && SOCIOS.iban) {
+      copiar.addEventListener('click', function () {
+        const iban = SOCIOS.iban;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(iban).then(function () {
+            copiar.textContent = 'IBAN copiado ✓';
+          });
+        } else {
+          const area = document.createElement('textarea');
+          area.value = iban;
+          area.style.position = 'fixed';
+          area.style.opacity = '0';
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand('copy');
+          document.body.removeChild(area);
+          copiar.textContent = 'IBAN copiado ✓';
+        }
+      });
+    }
+
+    const form = $('altaSocioForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const responsable = $('socioResponsable').value.trim();
+        const alumnado = $('socioAlumnado').value.trim();
+        const concepto = (SOCIOS.concepto || 'COTA ANPA') + ' - ' + responsable;
+        const msg =
+          'Ola, quero dar de alta a miña familia como socia da ANPA Santa Uxía.\n\n' +
+          'Persoa responsable: ' + responsable + '\n' +
+          'Alumnado e curso: ' + alumnado + '\n' +
+          'Cota: ' + (SOCIOS.cotaAnual || '20 €') + ' por familia e curso escolar.\n' +
+          'Concepto da transferencia: ' + concepto + '\n\n' +
+          'Vou adxuntar nesta conversa o xustificante do pagamento.';
+
+        window.open(waURL(msg), '_blank', 'noopener,noreferrer');
+      });
+    }
   }
 
   // ── CONTACTO ─────────────────────────────────────────────────

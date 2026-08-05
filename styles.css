@@ -576,10 +576,73 @@ ul   { list-style: none; }
 }
 .socios-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
+.alta-socio-panel {
+  margin-top: 24px;
+  max-width: 620px;
+  padding: 24px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--radius-md);
+}
+.alta-socio-panel[hidden] { display: none; }
+.alta-socio-steps {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 20px;
+  color: rgba(255,255,255,.78);
+  font-size: .84rem; font-weight: 700;
+}
+.alta-socio-steps span { display: flex; align-items: center; gap: 7px; }
+.alta-socio-steps b {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; color: var(--blue); font-size: .75rem;
+}
+.alta-socio-form { display: grid; gap: 16px; }
+.alta-socio-field label {
+  display: block; margin-bottom: 6px;
+  font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.86);
+}
+.alta-socio-field input {
+  width: 100%; padding: 12px 13px;
+  border: 1.5px solid rgba(255,255,255,.28);
+  border-radius: var(--radius);
+  background: #fff; color: var(--text);
+  font: inherit; font-size: .95rem;
+}
+.alta-socio-field input:focus {
+  outline: 3px solid rgba(255,255,255,.22);
+  border-color: #fff;
+}
+.alta-socio-pago {
+  margin-top: 2px; padding: 16px;
+  border-radius: var(--radius);
+  background: rgba(0,0,0,.13);
+}
+.socios-content .alta-socio-pago p { margin: 6px 0 10px; max-width: none; font-size: .86rem; }
+.alta-socio-eyebrow { font-size: .78rem; color: rgba(255,255,255,.7); }
+.alta-socio-iban-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.alta-socio-iban-row code {
+  padding: 9px 11px; border-radius: 6px;
+  background: rgba(255,255,255,.1); color: #fff;
+  font-size: .88rem; font-weight: 700; letter-spacing: .02em;
+}
+.socios-content .alta-socio-concepto { margin-bottom: 0; color: rgba(255,255,255,.72); }
+.alta-socio-submit { justify-self: start; border: 0; cursor: pointer; }
+.socios-content .alta-socio-privacy {
+  margin: -3px 0 0; max-width: 560px;
+  font-size: .72rem; line-height: 1.5; color: rgba(255,255,255,.58);
+}
+
 @media (max-width: 700px) {
   .socios-inner { grid-template-columns: 1fr; gap: 28px; }
   .socios-cota-block { flex-direction: row; align-items: baseline; gap: 12px; padding: 20px 24px; }
   .socios-precio { font-size: 3rem; }
+  .alta-socio-panel { padding: 18px; }
+  .alta-socio-steps { justify-content: space-between; gap: 8px; }
+  .alta-socio-iban-row { align-items: stretch; }
+  .alta-socio-iban-row code { width: 100%; overflow-wrap: anywhere; }
+  .alta-socio-iban-row .btn { width: 100%; }
+  .alta-socio-submit { width: 100%; }
 }
 
 /* ─── CONTACTO ───────────────────────────────────────────────── */

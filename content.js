@@ -181,7 +181,6 @@ const REDES = {
 const SOCIOS = {
   cotaAnual:    "20 €",
   cotaDetalle:  "por familia e curso escolar",
-  // IBAN: non publicar ata confirmar. Deixar baleiro ("") para non mostrar.
-  iban:    "ES81 2080 0303 1330 4001 6758",
-  titular: "ANPA Santa Uxía",
+  iban:          "ES81 2080 0303 1330 4001 6758",
+  concepto:      "COTA ANPA",
 };

@@ -188,7 +188,7 @@ Nesta versión móstrase un único próximo evento. Cando remate, cambia os dato
 - [ ] O número de WhatsApp en `CONFIG.whatsappNumero` (formato: `"34XXXXXXXXX"`)
 - [ ] O correo electrónico en `CONFIG.email`
 - [ ] O horario de atención en `CONFIG.horarioAtencion`
-- [ ] Se se publican datos bancarios no futuro, comprobar antes `SOCIOS.iban` e `SOCIOS.titular`
+- [ ] Se cambia a cota ou a conta bancaria, actualizar `SOCIOS.cotaAnual` e `SOCIOS.iban`
 - [x] A URL canónica está configurada como `https://anpaogrupo.es/`
 
 ### ⚠️ Non fagas isto:
