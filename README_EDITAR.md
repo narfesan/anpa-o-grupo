@@ -36,7 +36,6 @@ README_EDITAR.md    → Este ficheiro de instrucións
 assets/
   images/           → Imaxes das actividades
   posters/          → Carteis dos eventos (JPG, PNG ou WebP)
-  docs/             → Documentos PDF descargables
   favicon.svg       → Icona do navegador
 ```
 
@@ -84,18 +83,15 @@ const AVISO = {
 ```javascript
 {
   visible: true,
-  titulo: "Natación",
-  categoria: "Deporte",        // Opcións: "Deporte" | "Idiomas" | "Música e baile" | "Creatividade" | "Conciliación"
-  idadeRecomendada: "5-12 anos",
-  dias: "Martes e xoves",
-  horario: "17:00–18:00",
-  lugar: "Piscina municipal de Ribeira",
-  prezoSocios: "",             // Deixar baleiro se non está confirmado
-  prezoNonSocios: "",
-  descripcion: "Clases de natación para todos os niveis.",
-  estado: "Inscrición aberta", // Ver opcións máis abaixo
-  imaxe: "assets/images/natacion.jpg",
-  icono: "🏊",
+  titulo: "Patinaxe",
+  categoria: "Deporte",
+  nivel: "Primaria",
+  horario: "Martes 16:00–17:00",
+  lugar: "CEIP O Grupo",
+  prezo: "Consultar",
+  descripcion: "Iniciación e perfeccionamento.",
+  estado: "Inscrición aberta",
+  whatsappMsg: "Ola, quero información sobre a actividade de patinaxe da ANPA Santa Uxía.",
 },
 ```
 
@@ -110,7 +106,7 @@ const AVISO = {
 
 ## Como ocultar un elemento
 
-Cambia `visible: true` por `visible: false` en calquera actividade, evento, servizo ou documento:
+Cambia `visible: true` por `visible: false` en calquera actividade, evento ou servizo:
 
 ```javascript
 {
@@ -130,30 +126,24 @@ O elemento desaparecerá da web sen necesidade de borralo. Podes volver a activa
    - Usa nomes sen espazos nin acentos: `festa-veran-2026.jpg` ✅
    - Non uses: `Festa Verán 2026.jpg` ❌
 
-2. Abre `content.js` e busca `const EVENTOS = [`
+2. Abre `content.js` e busca `const EVENTO = {`
 
-3. Engade un novo bloque:
+3. Substitúe os datos do evento actual polos do novo evento:
 
 ```javascript
-{
+const EVENTO = {
   visible: true,
-  destacado: false,            // true = aparece como evento principal na portada
   titulo: "Festa do verán",
-  fechaInicio: "2026-06-20",  // Formato OBRIGATORIO: AAAA-MM-DD
-  fechaFin: "",               // Deixar baleiro se é un só día
+  fecha: "20 de xuño de 2026",
   hora: "18:00",
   lugar: "Patio do CEIP Plurilingüe O Grupo",
-  resumen: "Unha tarde de festa para toda a comunidade educativa.",
-  cartel: "assets/posters/festa-veran-2026.jpg",  // Ruta ao cartel
-  inscripcion: "",            // URL de inscrición (deixar baleiro se non existe)
-  gratuitoSocios: true,       // true = mostra a insignia "Gratuíto para socios/as"
-},
+  descripcion: "Unha tarde de festa para toda a comunidade educativa.",
+  cartel: "assets/posters/festa-veran-2026.jpg",
+  whatsappMsg: "Ola, quero información sobre a Festa do verán da ANPA Santa Uxía.",
+};
 ```
 
-**Datas:**
-- Formato obrigatorio: `"AAAA-MM-DD"` (ano-mes-día)
-- Exemplo: `"2026-09-20"` para o 20 de setembro de 2026
-- Os eventos pasados pasan automaticamente a "Eventos anteriores"
+Nesta versión móstrase un único próximo evento. Cando remate, cambia os datos polo seguinte ou usa `visible: false` para ocultar a sección temporalmente.
 
 ---
 
@@ -170,12 +160,6 @@ O elemento desaparecerá da web sen necesidade de borralo. Podes volver a activa
 - Os carteis manteñen as súas proporcións orixinais (verticais, cadrados, etc.)
 - Formatos: JPG, PNG ou WebP
 
-### Para documentos PDF
-- Garda os PDFs en `assets/docs/`
-- Nomes sen espazos: `formulario-alta-socios.pdf`
-
----
-
 ## Como publicar en GitHub Pages
 
 ### Primeira vez
@@ -187,7 +171,7 @@ O elemento desaparecerá da web sen necesidade de borralo. Podes volver a activa
 5. En `Source` selecciona `Deploy from a branch`
 6. En `Branch` selecciona `main` e `/root`
 7. Preme `Save`
-8. En uns minutos a web estará en `https://[usuario].github.io/[repositorio]/`
+8. A web pública desta ANPA está configurada para `https://anpaogrupo.es/`
 
 ### Para actualizar a web
 
@@ -204,12 +188,12 @@ O elemento desaparecerá da web sen necesidade de borralo. Podes volver a activa
 - [ ] O número de WhatsApp en `CONFIG.whatsappNumero` (formato: `"34XXXXXXXXX"`)
 - [ ] O correo electrónico en `CONFIG.email`
 - [ ] O horario de atención en `CONFIG.horarioAtencion`
-- [ ] Os datos bancarios en `SOCIOS.iban` e `SOCIOS.titular` (ou deixar baleiro)
-- [ ] A URL canónica en `CONFIG.urlCanonica`
+- [ ] Se se publican datos bancarios no futuro, comprobar antes `SOCIOS.iban` e `SOCIOS.titular`
+- [x] A URL canónica está configurada como `https://anpaogrupo.es/`
 
 ### ⚠️ Non fagas isto:
 
-- Non renomes as carpetas `assets/`, `images/`, `posters/` ou `docs/`
+- Non renomes as carpetas `assets/`, `images/` ou `posters/`
 - Non borres `index.html`, `styles.css` ou `script.js`
 - Non uses nomes de ficheiro con espazos ou acentos
 - Non publiques datos persoais de menores (fotos identificables, nomes, etc.)
