@@ -221,7 +221,7 @@
   function renderSocios() {
     const precio = $('sociosPrecio');
     const det    = $('sociosDet');
-    if (precio && SOCIOS) precio.textContent = SOCIOS.cotaAnual || '15 €';
+    if (precio && SOCIOS) precio.textContent = SOCIOS.cotaAnual || '20 €';
     if (det    && SOCIOS) det.textContent    = SOCIOS.cotaDetalle || 'por familia e curso escolar';
   }
 
