@@ -3,7 +3,7 @@
 //  Ribeira, A Coruña
 // =============================================================
 //
-//  Este é o único ficheiro que necesitas editar para manter a web.
+//  Este é o ficheiro principal para manter o contido da web.
 //
 //  INSTRUCIÓNS BÁSICAS
 //  • Cambia o texto entre comiñas:  "novo texto aquí"
@@ -50,12 +50,53 @@ const CONFIG = {
 };
 
 // ──────────────────────────────────────────────────────────────
+//  ESTABLECEMENTOS COLABORADORES
+//
+//  1. Sube cada logo a assets/colaboradores/
+//  2. Copia un bloque { ... } da lista e cambia os seus datos
+//  3. Usa visible: false para ocultar temporalmente un logo
+//
+//  A franxa superior ocúltase soa se non hai logos visibles.
+// ──────────────────────────────────────────────────────────────
+const COLABORADORES = {
+  visible: true,
+  titulo: "Colaboran",
+  velocidade: 32, // Duración dunha volta completa, en segundos
+  logos: [
+    // Exemplo para copiar cando subas un logo:
+    // {
+    //   visible: true,
+    //   nome: "Nome do establecemento",
+    //   logo: "assets/colaboradores/nome-establecemento.png",
+    //   url: "", // Opcional. Pódese deixar baleiro.
+    // },
+  ],
+};
+
+// ──────────────────────────────────────────────────────────────
 //  AVISO (franxa informativa baixo a portada)
 //  visible: false para ocultar por completo
 // ──────────────────────────────────────────────────────────────
 const AVISO = {
   visible: true,
-  texto: "Programación do curso 2026–2027 pendente de confirmación. Contacta coa ANPA para máis información.",
+  texto: "Xa podes consultar os horarios e prezos das actividades extraescolares do curso 2026–2027.",
+};
+
+// ──────────────────────────────────────────────────────────────
+//  PDF E RESUMO DE EXTRAESCOLARES
+//
+//  Para actualizar o documento sen tocar código, substitúe o PDF da
+//  carpeta assets/docs/ por outro co mesmo nome.
+// ──────────────────────────────────────────────────────────────
+const EXTRAESCOLARES = {
+  visible: true,
+  etiqueta: "Curso 2026–2027",
+  titulo: "Toda a oferta, nunha soa ollada",
+  resumo: "Deporte, música, idiomas, creatividade e pensamento crítico ao longo de toda a semana.",
+  periodo: "As actividades desenvólvense de outubro a maio, agás Inglés, do 15 de setembro ao 15 de xuño.",
+  pdf: "assets/docs/actividades-extraescolares-2026-2027.pdf",
+  botonTexto: "Ver horarios e prezos",
+  whatsappMsg: "Ola, quero información sobre as actividades extraescolares do curso 2026-2027.",
 };
 
 // ──────────────────────────────────────────────────────────────
@@ -70,53 +111,52 @@ const AVISO = {
 const ACTIVIDADES = [
   {
     visible: true,
-    titulo:      "Patinaxe",
-    categoria:   "Deporte",
-    nivel:       "Primaria",
-    horario:     "Consultar",
-    lugar:       "Instalacións do centro",
-    prezo:       "Consultar",
-    descripcion: "Iniciación e perfeccionamento.",
-    estado:      "Programación por confirmar",
-    whatsappMsg: "Ola, quero información sobre a actividade de patinaxe da ANPA Santa Uxía.",
+    titulo:      "Movemento e deporte",
+    categoria:   "Extraescolares",
+    nivel:       "Infantil e Primaria",
+    horario:     "De luns a venres",
+    lugar:       "Centro e instalacións indicadas",
+    prezo:       "Ver PDF",
+    descripcion: "Acrobática e parkour, patinaxe, fútbol e multideporte.",
+    estado:      "",
+    whatsappMsg: "Ola, quero información sobre as actividades de movemento e deporte.",
   },
   {
     visible: true,
-    titulo:      "Parkour",
-    categoria:   "Deporte",
+    titulo:      "Música e baile",
+    categoria:   "Extraescolares",
     nivel:       "Primaria",
-    horario:     "Consultar",
+    horario:     "Martes, mércores e venres",
     lugar:       "CEIP O Grupo",
-    prezo:       "Consultar",
-    descripcion: "Movemento, coordinación e superación persoal.",
-    estado:      "Programación por confirmar",
-    whatsappMsg: "Ola, quero información sobre a actividade de parkour da ANPA Santa Uxía.",
+    prezo:       "Ver PDF",
+    descripcion: "Pandeireta, creatividade musical e baile moderno.",
+    estado:      "",
+    whatsappMsg: "Ola, quero información sobre as actividades de música e baile.",
   },
   {
     visible: true,
-    titulo:      "Baile moderno",
-    categoria:   "Baile",
+    titulo:      "Aprendizaxe e creatividade",
+    categoria:   "Extraescolares",
     nivel:       "Primaria",
-    horario:     "Consultar",
+    horario:     "De martes a venres",
     lugar:       "CEIP O Grupo",
-    prezo:       "Consultar",
-    descripcion: "Ritmo, expresión e coreografías adaptadas á idade.",
-    estado:      "Programación por confirmar",
-    whatsappMsg: "Ola, quero información sobre a actividade de baile moderno da ANPA Santa Uxía.",
+    prezo:       "Ver PDF",
+    descripcion: "Inglés, xeometría, cociña divertida e Aprende a pensar.",
+    estado:      "",
+    whatsappMsg: "Ola, quero información sobre as actividades de aprendizaxe e creatividade.",
   },
-  // Engade aquí máis actividades cando estean confirmadas.
-  // {
-  //   visible: false,
-  //   titulo:      "Inglés",
-  //   categoria:   "Idiomas",
-  //   nivel:       "Primaria",
-  //   horario:     "Luns e mércores 16:00–17:00",
-  //   lugar:       "CEIP O Grupo",
-  //   prezo:       "Consultar",
-  //   descripcion: "Refuerzo e aprendizaxe en grupos reducidos.",
-  //   estado:      "Inscrición aberta",
-  //   whatsappMsg: "Ola, quero información sobre as clases de inglés da ANPA.",
-  // },
+  {
+    visible: true,
+    titulo:      "Artes plásticas en NUME",
+    categoria:   "Fóra do colexio",
+    nivel:       "De 4 a 13 anos",
+    horario:     "De luns a sábado",
+    lugar:       "NUME Espazo Creativo",
+    prezo:       "Ver PDF",
+    descripcion: "Debuxo e pintura ou barro e refugallo.",
+    estado:      "",
+    whatsappMsg: "Ola, quero información sobre as actividades de artes plásticas en NUME.",
+  },
 ];
 
 // ──────────────────────────────────────────────────────────────
@@ -170,11 +210,37 @@ const REDES = {
   foto1: "https://images.unsplash.com/photo-1607211851821-8be3cd6146f0?w=700&h=560&fit=crop&auto=format",
   foto1Alt: "Actividade creativa con pinturas",
   foto2: "assets/images/ogrupo.jpg",
-foto2Alt: "CEIP Plurilingüe O Grupo de Ribeira",
-  foto2Alt: "O colexio",
+  foto2Alt: "CEIP Plurilingüe O Grupo de Ribeira",
   foto3: "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=700&h=560&fit=crop&auto=format",
   foto3Alt: "Obradoiro artístico con nenas e nenos",
 };
+
+// ──────────────────────────────────────────────────────────────
+//  BENEFICIOS DE SER SOCIO/A
+//  Engade, elimina ou reordena bloques completos { ... }.
+// ────────────────────────────────────────────────────────────────
+const BENEFICIOS_SOCIOS = [
+  {
+    visible: true,
+    titulo: "Actividades extraescolares",
+    texto: "Acceso á oferta organizada ou xestionada pola ANPA.",
+  },
+  {
+    visible: true,
+    titulo: "Comedor e madrugadores",
+    texto: "Acceso aos servizos que facilitan a conciliación familiar.",
+  },
+  {
+    visible: true,
+    titulo: "Descontos para as familias",
+    texto: "Vantaxes en numerosos establecementos colaboradores.",
+  },
+  {
+    visible: true,
+    titulo: "Festas infantís gratuítas",
+    texto: "Acceso gratuíto ás festas organizadas pola ANPA ao longo do curso.",
+  },
+];
 
 // ──────────────────────────────────────────────────────────────
 //  SOCIOS
@@ -182,6 +248,7 @@ foto2Alt: "CEIP Plurilingüe O Grupo de Ribeira",
 const SOCIOS = {
   cotaAnual:    "20 €",
   cotaDetalle:  "por familia e curso escolar",
+  beneficiosTitulo: "Vantaxes de ser socio/a",
   iban:          "ES81 2080 0303 1330 4001 6758",
   concepto:      "COTA ANPA",
 };

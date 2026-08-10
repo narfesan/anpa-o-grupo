@@ -237,6 +237,106 @@ ul   { list-style: none; }
   .header-brand-text span { display: none; }
 }
 
+/* ─── COLABORADORES ─────────────────────────────────────────── */
+.colaboradores-strip {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.colaboradores-inner {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.colaboradores-label {
+  flex: 0 0 auto;
+  font-size: .65rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-light);
+  max-width: 126px;
+}
+.colaboradores-viewport {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+.colaboradores-viewport.is-static {
+  overflow-x: auto;
+  -webkit-mask-image: none;
+  mask-image: none;
+  scrollbar-width: thin;
+}
+.colaboradores-track {
+  --colaboradores-duration: 32s;
+  display: flex;
+  width: max-content;
+  animation: colaboradores-scroll var(--colaboradores-duration) linear infinite;
+  will-change: transform;
+}
+.colaboradores-track:hover,
+.colaboradores-track:focus-within { animation-play-state: paused; }
+.colaboradores-track.is-static {
+  width: 100%;
+  animation: none;
+  will-change: auto;
+}
+.colaboradores-group {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding-right: 26px;
+}
+.colaboradores-track.is-static .colaboradores-group { padding-right: 0; }
+.colaborador-logo {
+  width: 112px;
+  height: 36px;
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  opacity: .72;
+  filter: grayscale(.28);
+  transition: opacity var(--trans), filter var(--trans);
+}
+.colaborador-logo:hover,
+.colaborador-logo:focus-visible {
+  opacity: 1;
+  filter: none;
+  text-decoration: none;
+}
+.colaborador-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@keyframes colaboradores-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 560px) {
+  .colaboradores-inner { min-height: 48px; gap: 10px; padding-right: 0; }
+  .colaboradores-label { max-width: 82px; font-size: .58rem; }
+  .colaborador-logo { width: 92px; height: 30px; padding: 2px 6px; }
+  .colaboradores-group { gap: 18px; padding-right: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colaboradores-viewport {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .colaboradores-track { animation: none; will-change: auto; }
+  .colaboradores-group[aria-hidden="true"] { display: none; }
+}
+
 /* ─── PORTADA ────────────────────────────────────────────────── */
 .portada {
   background: var(--cream);
@@ -342,6 +442,62 @@ ul   { list-style: none; }
 }
 
 /* ─── ACTIVIDADES ────────────────────────────────────────────── */
+.extraescolares-destacado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin: 26px 0 34px;
+  padding: 22px 24px;
+  background: var(--blue-pale);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.extraescolares-copy { max-width: 620px; }
+.extraescolares-etiqueta {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--blue);
+  font-size: .68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.extraescolares-destacado h3 {
+  margin-bottom: 5px;
+  color: var(--blue-dark);
+  font-size: 1.12rem;
+  line-height: 1.25;
+}
+.extraescolares-destacado p {
+  color: var(--text-mid);
+  font-size: .88rem;
+  line-height: 1.55;
+}
+.extraescolares-destacado .extraescolares-periodo {
+  margin-top: 5px;
+  color: var(--text-light);
+  font-size: .78rem;
+}
+.extraescolares-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 9px;
+  flex: 0 0 auto;
+}
+.doc-icon { width: 18px; height: 18px; flex: 0 0 auto; }
+
+@media (max-width: 760px) {
+  .extraescolares-destacado { align-items: flex-start; flex-direction: column; }
+  .extraescolares-actions { width: 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .extraescolares-destacado { padding: 18px; }
+  .extraescolares-actions .btn { width: 100%; justify-content: center; }
+}
+
 .actividades-nota {
   display: inline-block;
   background: rgba(184,92,40,.08); border-left: 3px solid var(--accent);
@@ -574,6 +730,54 @@ ul   { list-style: none; }
   content: "→"; color: var(--green-wa);
   font-weight: 700; flex-shrink: 0;
 }
+.beneficios-title {
+  margin: 2px 0 10px;
+  color: rgba(255,255,255,.92);
+  font-size: .86rem;
+  font-weight: 800;
+}
+.beneficios-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  max-width: 720px;
+  margin: 0 0 28px;
+  border-top: 1px solid rgba(255,255,255,.14);
+}
+.beneficio-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.beneficio-check {
+  width: 21px;
+  height: 21px;
+  margin-top: 1px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  background: rgba(37,211,102,.15);
+  color: var(--green-wa);
+  font-size: .76rem;
+  font-weight: 900;
+}
+.beneficio-item strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #fff;
+  font-size: .88rem;
+  line-height: 1.35;
+}
+.beneficio-item div > span {
+  display: block;
+  color: rgba(255,255,255,.68);
+  font-size: .78rem;
+  line-height: 1.5;
+}
 .socios-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
 .alta-socio-panel {
@@ -637,6 +841,7 @@ ul   { list-style: none; }
   .socios-inner { grid-template-columns: 1fr; gap: 28px; }
   .socios-cota-block { flex-direction: row; align-items: baseline; gap: 12px; padding: 20px 24px; }
   .socios-precio { font-size: 3rem; }
+  .beneficios-list { grid-template-columns: 1fr; }
   .alta-socio-panel { padding: 18px; }
   .alta-socio-steps { justify-content: space-between; gap: 8px; }
   .alta-socio-iban-row { align-items: stretch; }

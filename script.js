@@ -53,6 +53,57 @@
     if (waBtn) waBtn.href = waURL('Ola, quero contactar coa ANPA Santa Uxía do CEIP O Grupo.');
   }
 
+  // ── COLABORADORES ──────────────────────────────────────────────
+  function renderColaboradores() {
+    const strip = $('colaboradoresStrip');
+    const track = $('colaboradoresTrack');
+    const title = $('colaboradoresTitulo');
+    if (!strip || !track || typeof COLABORADORES === 'undefined' || !COLABORADORES) return;
+
+    const logos = (COLABORADORES.logos || []).filter(function (item) {
+      return item.visible !== false && item.logo && item.nome;
+    });
+
+    if (!COLABORADORES.visible || !logos.length) {
+      strip.hidden = true;
+      return;
+    }
+
+    if (title) title.textContent = COLABORADORES.titulo || 'Establecementos colaboradores';
+
+    function logoHTML(item, duplicated) {
+      const image = '<img src="' + esc(item.logo) + '" alt="' + (duplicated ? '' : esc(item.nome)) + '" loading="eager">';
+      if (item.url && !duplicated) {
+        return '<a class="colaborador-logo" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer" aria-label="Visitar ' + esc(item.nome) + '">' + image + '</a>';
+      }
+      return '<span class="colaborador-logo"' + (duplicated ? ' aria-hidden="true"' : ' title="' + esc(item.nome) + '"') + '>' + image + '</span>';
+    }
+
+    const firstGroup = '<div class="colaboradores-group">' + logos.map(function (item) {
+      return logoHTML(item, false);
+    }).join('') + '</div>';
+
+    const animated = logos.length >= 4;
+    const secondGroup = animated
+      ? '<div class="colaboradores-group" aria-hidden="true">' + logos.map(function (item) {
+          return logoHTML(item, true);
+        }).join('') + '</div>'
+      : '';
+
+    track.innerHTML = firstGroup + secondGroup;
+    track.classList.toggle('is-static', !animated);
+    if (track.parentElement) track.parentElement.classList.toggle('is-static', !animated);
+    track.style.setProperty('--colaboradores-duration', Math.max(16, Number(COLABORADORES.velocidade) || 32) + 's');
+    strip.hidden = false;
+
+    track.querySelectorAll('img').forEach(function (img) {
+      img.addEventListener('error', function () {
+        const item = img.closest('.colaborador-logo');
+        if (item) item.style.display = 'none';
+      });
+    });
+  }
+
   // ── AVISO ────────────────────────────────────────────────────
   function renderAviso() {
     const el = $('avisoWrapper');
@@ -90,6 +141,39 @@
       'Actividade rematada':        'rematada',
     };
     return m[e] || 'confirmar';
+  }
+
+  function renderExtraescolares() {
+    const wrapper = $('extraescolaresDestacado');
+    if (!wrapper || typeof EXTRAESCOLARES === 'undefined' || !EXTRAESCOLARES) return;
+
+    if (!EXTRAESCOLARES.visible) {
+      wrapper.style.display = 'none';
+      return;
+    }
+
+    const pdfButton = EXTRAESCOLARES.pdf
+      ? '<a class="btn btn--blue" href="' + esc(EXTRAESCOLARES.pdf) + '" target="_blank" rel="noopener noreferrer" type="application/pdf">' +
+          '<svg class="doc-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm1 7V4.5L19.5 9H15zM8 13h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>' +
+          esc(EXTRAESCOLARES.botonTexto || 'Ver horarios e prezos') +
+        '</a>'
+      : '';
+
+    const whatsappButton = EXTRAESCOLARES.whatsappMsg
+      ? '<a class="btn btn--outline" href="' + esc(waURL(EXTRAESCOLARES.whatsappMsg)) + '" target="_blank" rel="noopener noreferrer">' +
+          WA_SVG + ' Consultar dúbidas</a>'
+      : '';
+
+    wrapper.innerHTML =
+      '<div class="extraescolares-destacado">' +
+        '<div class="extraescolares-copy">' +
+          (EXTRAESCOLARES.etiqueta ? '<span class="extraescolares-etiqueta">' + esc(EXTRAESCOLARES.etiqueta) + '</span>' : '') +
+          '<h3>' + esc(EXTRAESCOLARES.titulo || 'Programación extraescolar') + '</h3>' +
+          (EXTRAESCOLARES.resumo ? '<p>' + esc(EXTRAESCOLARES.resumo) + '</p>' : '') +
+          (EXTRAESCOLARES.periodo ? '<p class="extraescolares-periodo">' + esc(EXTRAESCOLARES.periodo) + '</p>' : '') +
+        '</div>' +
+        '<div class="extraescolares-actions">' + pdfButton + whatsappButton + '</div>' +
+      '</div>';
   }
 
   function renderActividades() {
@@ -226,8 +310,23 @@
 
     const altaCota = $('altaSocioCota');
     const altaIban = $('altaSocioIban');
+    const beneficiosTitulo = $('beneficiosTitulo');
     if (altaCota && SOCIOS) altaCota.textContent = SOCIOS.cotaAnual || '20 €';
     if (altaIban && SOCIOS) altaIban.textContent = SOCIOS.iban || '';
+    if (beneficiosTitulo && SOCIOS) beneficiosTitulo.textContent = SOCIOS.beneficiosTitulo || 'Vantaxes de ser socio/a';
+
+    const beneficios = $('beneficiosSocios');
+    if (beneficios && typeof BENEFICIOS_SOCIOS !== 'undefined' && BENEFICIOS_SOCIOS) {
+      const visibles = BENEFICIOS_SOCIOS.filter(function (item) { return item.visible !== false; });
+      beneficios.innerHTML = visibles.map(function (item) {
+        return '<li class="beneficio-item">' +
+          '<span class="beneficio-check" aria-hidden="true">✓</span>' +
+          '<div><strong>' + esc(item.titulo || '') + '</strong>' +
+          (item.texto ? '<span>' + esc(item.texto) + '</span>' : '') + '</div>' +
+        '</li>';
+      }).join('');
+      if (!visibles.length) beneficios.style.display = 'none';
+    }
 
     const toggle = $('abrirAltaSocio');
     const panel = $('altaSocioPanel');
@@ -383,8 +482,10 @@
   // ── INIT ─────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
     initHeader();
+    renderColaboradores();
     renderAviso();
     initPortadaBtns();
+    renderExtraescolares();
     renderActividades();
     renderEvento();
     renderServizos();

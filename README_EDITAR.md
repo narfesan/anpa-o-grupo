@@ -1,230 +1,163 @@
 # Guía de edición da web da ANPA Santa Uxía
 
-> **Para editar a web só necesitas abrir o ficheiro `content.js` cun editor de texto.**
-> Non é necesario tocar ningún outro ficheiro.
+> A maior parte do contido modifícase en `content.js`. Para renovar horarios, carteis ou logos, normalmente só hai que subir o novo ficheiro á carpeta correspondente.
 
----
+## Onde está cada cousa
 
-## Índice
-
-1. [Antes de empezar](#antes-de-empezar)
-2. [Como editar texto](#como-editar-texto)
-3. [Como engadir unha actividade](#como-engadir-unha-actividade)
-4. [Como ocultar un elemento](#como-ocultar-un-elemento)
-5. [Como engadir un evento e cartel](#como-engadir-un-evento-e-cartel)
-6. [Como subir imaxes](#como-subir-imaxes)
-7. [Como publicar en GitHub Pages](#como-publicar-en-github-pages)
-8. [Avisos importantes](#avisos-importantes)
-
----
-
-## Antes de empezar
-
-### Ferramentas necesarias
-
-- Un editor de texto sinxelo (Notepad++ en Windows, TextEdit en Mac, ou similar)
-- Acceso ao repositorio en GitHub
-
-### Estrutura de ficheiros
-
-```
-index.html          → A páxina web (NON editar)
-styles.css          → O deseño visual (NON editar)
-script.js           → A lóxica (NON editar)
-content.js          → AQUÍ se edita todo o contido ✓
-README_EDITAR.md    → Este ficheiro de instrucións
+```text
+index.html          → Estrutura da páxina. Non editar para cambios habituais.
+styles.css          → Deseño. Non editar para cambios habituais.
+script.js           → Funcionamento. Non editar para cambios habituais.
+content.js          → Textos, actividades, beneficios, enlaces e ficheiros.
 assets/
-  images/           → Imaxes das actividades
-  posters/          → Carteis dos eventos (JPG, PNG ou WebP)
-  favicon.svg       → Icona do navegador
+  images/           → Fotografías e logos da ANPA e do centro.
+  docs/             → PDF de extraescolares.
+  colaboradores/    → Logos dos establecementos colaboradores.
+  posters/          → Carteis de eventos.
 ```
 
----
+## Actualizar o PDF de extraescolares
 
-## Como editar texto
+A opción máis sinxela é manter sempre este nome:
 
-1. Abre `content.js` co editor de texto
-2. Busca a sección que queres cambiar (os comentarios explican cada parte)
-3. Cambia o texto **entre comiñas**
+```text
+assets/docs/actividades-extraescolares-2026-2027.pdf
+```
 
-**Exemplo — cambiar o aviso principal:**
+En GitHub:
+
+1. Entra en `assets` → `docs`.
+2. Sube o novo PDF co mesmo nome.
+3. Confirma que GitHub substitúe o anterior.
+4. Fai o commit.
+
+A ligazón da web seguirá funcionando sen modificar ningún outro ficheiro.
+
+Se prefires cambiar o nome, abre `content.js`, busca `const EXTRAESCOLARES` e modifica:
 
 ```javascript
-const AVISO = {
-  visible: true,
-  etiqueta: "Aviso importante",
-  titulo: "Aberto o prazo de inscrición",  // ← Cambia este texto
-  texto: "Xa está dispoñible a programación...",  // ← E este
-  botonTexto: "Ver actividades",
-};
+pdf: "assets/docs/novo-nome.pdf",
 ```
 
-### Regras básicas
+No mesmo bloque podes cambiar o título, o resumo, o período, o texto do botón ou ocultalo con `visible: false`.
 
-- ✅ Podes cambiar o texto entre comiñas: `"texto aquí"`
-- ✅ Podes copiar e pegar bloques completos
-- ❌ Non borres as comiñas `" "`
-- ❌ Non borres as chaves `{ }`
-- ❌ Non borres as comas `,` ao final de cada liña
-- ❌ Non borres os corchetes `[ ]`
+## Engadir logos de colaboradores
 
----
+### 1. Subir o logo
 
-## Como engadir unha actividade
+1. Entra en `assets` → `colaboradores`.
+2. Sube un PNG, WebP, JPG ou SVG.
+3. Usa un nome sinxelo, sen espazos nin acentos: `comercio-ribeira.png`.
+4. Para que cargue rápido, procura que pese menos de 150 KB.
 
-1. Abre `content.js`
-2. Busca a sección `const ACTIVIDADES = [`
-3. Copia un bloque existente (desde `{` ata `},`)
-4. Pégao despois do último bloque
-5. Cambia os datos
+Os logos horizontais e con fondo transparente funcionan mellor. A web adáptaos automaticamente ao mesmo espazo sen deformalos.
 
-**Exemplo de actividade:**
+### 2. Engadilo ao carrusel
+
+Abre `content.js`, busca `const COLABORADORES` e engade dentro de `logos: [ ]`:
 
 ```javascript
 {
   visible: true,
-  titulo: "Patinaxe",
-  categoria: "Deporte",
-  nivel: "Primaria",
-  horario: "Martes 16:00–17:00",
-  lugar: "CEIP O Grupo",
-  prezo: "Consultar",
-  descripcion: "Iniciación e perfeccionamento.",
-  estado: "Inscrición aberta",
-  whatsappMsg: "Ola, quero información sobre a actividade de patinaxe da ANPA Santa Uxía.",
+  nome: "Nome do establecemento",
+  logo: "assets/colaboradores/comercio-ribeira.png",
+  url: "https://exemplo.gal/",
 },
 ```
 
-**Estados posibles:**
-- `"Inscrición aberta"` → Verde
-- `"Prazas completas"` → Vermello
-- `"Proximamente"` → Amarelo
-- `"Só socios/as"` → Azul
-- `"Actividade rematada"` → Gris
+- `url` é opcional: pódese deixar como `""`.
+- `visible: false` oculta un logo sen borralo.
+- Podes reordenar os bloques para cambiar a orde.
+- Con 1–3 logos, a franxa queda estática. Con 4 ou máis, móvese suavemente.
+- `velocidade` indica os segundos dunha volta completa: un número maior significa movemento máis lento.
 
----
+A franxa superior ocúltase automaticamente mentres non haxa logos visibles.
 
-## Como ocultar un elemento
+## Modificar os beneficios de ser socio/a
 
-Cambia `visible: true` por `visible: false` en calquera actividade, evento ou servizo:
+En `content.js`, busca `const BENEFICIOS_SOCIOS`.
+
+Cada beneficio ten esta forma:
 
 ```javascript
 {
-  visible: false,   // ← Esta actividade non aparecerá na web
-  titulo: "Patinaxe",
-  ...
-}
+  visible: true,
+  titulo: "Descontos para as familias",
+  texto: "Vantaxes en numerosos establecementos colaboradores.",
+},
 ```
 
-O elemento desaparecerá da web sen necesidade de borralo. Podes volver a activalo cambiando a `true`.
+Podes cambiar os textos, reordenar os bloques ou usar `visible: false`. Non é necesario tocar `index.html`.
 
----
+## Modificar o resumo de actividades
 
-## Como engadir un evento e cartel
+O bloque azul claro co acceso ao PDF modifícase en `const EXTRAESCOLARES`.
 
-1. Sube o cartel á carpeta `assets/posters/` (JPG, PNG ou WebP)
-   - Usa nomes sen espazos nin acentos: `festa-veran-2026.jpg` ✅
-   - Non uses: `Festa Verán 2026.jpg` ❌
+As catro liñas de resumo que aparecen debaixo modifícanse en `const ACTIVIDADES`:
 
-2. Abre `content.js` e busca `const EVENTO = {`
+```javascript
+{
+  visible: true,
+  titulo: "Movemento e deporte",
+  categoria: "Extraescolares",
+  nivel: "Infantil e Primaria",
+  horario: "De luns a venres",
+  lugar: "Centro e instalacións indicadas",
+  prezo: "Ver PDF",
+  descripcion: "Acrobática e parkour, patinaxe, fútbol e multideporte.",
+  estado: "",
+  whatsappMsg: "Ola, quero información sobre as actividades de movemento e deporte.",
+},
+```
 
-3. Substitúe os datos do evento actual polos do novo evento:
+Para ocultar unha liña, cambia `visible: true` por `visible: false`.
+
+## Cambiar aviso, evento ou fotografías
+
+- Aviso superior: bloque `AVISO`.
+- Próximo evento: bloque `EVENTO`; os carteis van en `assets/posters/`.
+- Fotografías de “Así o vivimos”: bloque `REDES`; as imaxes locais van en `assets/images/`.
+- Cota e conta bancaria: bloque `SOCIOS`.
+- Teléfono, correo e redes: bloque `CONFIG`.
+
+Exemplo de cartel:
 
 ```javascript
 const EVENTO = {
   visible: true,
-  titulo: "Festa do verán",
-  fecha: "20 de xuño de 2026",
-  hora: "18:00",
+  titulo: "Festa de fin de curso",
+  fecha: "19 de xuño de 2027",
+  hora: "17:00",
   lugar: "Patio do CEIP Plurilingüe O Grupo",
-  descripcion: "Unha tarde de festa para toda a comunidade educativa.",
-  cartel: "assets/posters/festa-veran-2026.jpg",
-  whatsappMsg: "Ola, quero información sobre a Festa do verán da ANPA Santa Uxía.",
+  descripcion: "Unha tarde para compartir en familia.",
+  cartel: "assets/posters/fin-de-curso-2027.jpg",
+  whatsappMsg: "Ola, quero información sobre a festa de fin de curso.",
 };
 ```
 
-Nesta versión móstrase un único próximo evento. Cando remate, cambia os datos polo seguinte ou usa `visible: false` para ocultar a sección temporalmente.
+## Regras básicas ao editar `content.js`
+
+- Cambia só o texto que está entre comiñas.
+- Non borres comiñas, chaves, corchetes nin comas.
+- Usa nomes de ficheiro en minúsculas, sen espazos nin acentos.
+- Garda unha copia de seguridade antes dun cambio grande.
+- Comproba a web despois de cada publicación.
+
+## Publicar en GitHub Pages
+
+1. Sube ou edita os ficheiros no repositorio.
+2. Escribe unha mensaxe breve de commit.
+3. Pulsa `Commit changes`.
+4. Agarda a que o despregamento de Pages apareza en verde en `Actions`.
+5. Abre [anpaogrupo.es](https://anpaogrupo.es/) e forza a actualización con `Ctrl + F5` ou `Cmd + Shift + R`.
+
+## Seguridade e privacidade
+
+- Non publiques nomes, teléfonos nin fotografías identificables de menores sen autorización.
+- Confirma sempre o IBAN, a cota e o número de WhatsApp antes de publicar cambios.
+- Non borres `CNAME`, `index.html`, `styles.css` nin `script.js`.
 
 ---
 
-## Como subir imaxes
-
-### Para actividades
-- Garda as imaxes en `assets/images/`
-- Nomes sen espazos nin acentos: `patinaxe.jpg`, `baile-moderno.jpg`
-- Tamaño recomendado: 600×400 px, menos de 300 KB
-- Formatos: JPG, PNG ou WebP
-
-### Para carteis de eventos
-- Garda os carteis en `assets/posters/`
-- Os carteis manteñen as súas proporcións orixinais (verticais, cadrados, etc.)
-- Formatos: JPG, PNG ou WebP
-
-## Como publicar en GitHub Pages
-
-### Primeira vez
-
-1. Crea unha conta en [github.com](https://github.com) se non tes
-2. Crea un repositorio novo (preme o botón `+` → `New repository`)
-3. Sube todos os ficheiros: `index.html`, `styles.css`, `script.js`, `content.js` e a carpeta `assets/`
-4. Vai a `Settings` → `Pages`
-5. En `Source` selecciona `Deploy from a branch`
-6. En `Branch` selecciona `main` e `/root`
-7. Preme `Save`
-8. A web pública desta ANPA está configurada para `https://anpaogrupo.es/`
-
-### Para actualizar a web
-
-1. Edita `content.js` no teu ordenador
-2. Sobe o ficheiro modificado a GitHub (arrastra e solta ou usa o botón `Upload files`)
-3. A web actualízase automaticamente en 1-2 minutos
-
----
-
-## Avisos importantes
-
-### ⚠️ Antes de publicar, confirmar:
-
-- [ ] O número de WhatsApp en `CONFIG.whatsappNumero` (formato: `"34XXXXXXXXX"`)
-- [ ] O correo electrónico en `CONFIG.email`
-- [ ] O horario de atención en `CONFIG.horarioAtencion`
-- [ ] Se cambia a cota ou a conta bancaria, actualizar `SOCIOS.cotaAnual` e `SOCIOS.iban`
-- [x] A URL canónica está configurada como `https://anpaogrupo.es/`
-
-### ⚠️ Non fagas isto:
-
-- Non renomes as carpetas `assets/`, `images/` ou `posters/`
-- Non borres `index.html`, `styles.css` ou `script.js`
-- Non uses nomes de ficheiro con espazos ou acentos
-- Non publiques datos persoais de menores (fotos identificables, nomes, etc.)
-- Non publiques números de conta bancaria sen confirmar cos responsables
-
-### ✅ Sempre:
-
-- Garda copias de seguridade antes de cambiar cousas importantes
-- Comproba a web despois de cada actualización
-- Usa nomes de ficheiro en minúsculas, sen espazos: `festa-familias-2026.jpg`
-
----
-
-## Preguntas frecuentes sobre a edición
-
-**Non vexo os cambios na web despois de gardar**
-→ Actualiza o navegador con Ctrl+F5 (Windows) ou Cmd+Shift+R (Mac). Se acabas de publicar en GitHub Pages, agarda 2-3 minutos.
-
-**Rompín algo e a web non funciona**
-→ Abre `content.js` e busca onde falta unha comiña, chave ou coma. Ou restaura a copia de seguridade.
-
-**Quero cambiar o número de WhatsApp**
-→ Busca `whatsappNumero` en `content.js` e cambia o número. Formato: `"34612345678"` (sen o `+`, sen espazos).
-
-**Como saber se un evento xa pasou?**
-→ A web mostrará automaticamente os eventos pasados na sección "Eventos anteriores". Non precisas facer nada.
-
-**Podo engadir máis seccións ou cambiar o deseño?**
-→ As seccións están fixas no deseño. Para cambios maiores, contacta cunha persoa con coñecementos de HTML/CSS.
-
----
-
-*Última revisión: agosto 2025*
-*ANPA Santa Uxía · CEIP Plurilingüe O Grupo · Ribeira, A Coruña*
+*Última revisión: agosto de 2026*  
+*ANPA Santa Uxía · CEIP Plurilingüe O Grupo · Ribeira*
