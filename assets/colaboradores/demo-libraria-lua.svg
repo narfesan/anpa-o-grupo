@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" role="img" aria-labelledby="title">
+  <title id="title">Libraría Lúa, colaborador ficticio de demostración</title>
+  <rect width="320" height="100" rx="18" fill="#f5f0ff"/>
+  <circle cx="48" cy="50" r="28" fill="#6f57a8"/>
+  <path d="M58 28a23 23 0 1 0 0 44 20 20 0 1 1 0-44Z" fill="#fff"/>
+  <text x="88" y="49" font-family="Arial, sans-serif" font-size="23" font-weight="800" fill="#31254f">LIBRARÍA LÚA</text>
+  <text x="89" y="71" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2" fill="#6f57a8">MOSTRA · DEMO</text>
+</svg>

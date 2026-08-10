@@ -11,6 +11,7 @@ script.js           → Funcionamento. Non editar para cambios habituais.
 content.js          → Textos, actividades, beneficios, enlaces e ficheiros.
 assets/
   images/           → Fotografías e logos da ANPA e do centro.
+    actividades/    → Fotografías das fichas de actividades.
   docs/             → PDF de extraescolares.
   colaboradores/    → Logos dos establecementos colaboradores.
   posters/          → Carteis de eventos.
@@ -42,6 +43,8 @@ pdf: "assets/docs/novo-nome.pdf",
 No mesmo bloque podes cambiar o título, o resumo, o período, o texto do botón ou ocultalo con `visible: false`.
 
 ## Engadir logos de colaboradores
+
+> A versión de mostra inclúe seis logos ficticios marcados como **DEMO**. Antes de publicar colaboradores reais, elimina eses bloques de `content.js` e cambia o título `Colaboradores · demo` por `Colaboradores`.
 
 ### 1. Subir o logo
 
@@ -89,32 +92,35 @@ Cada beneficio ten esta forma:
 
 Podes cambiar os textos, reordenar os bloques ou usar `visible: false`. Non é necesario tocar `index.html`.
 
-## Modificar o resumo de actividades
+## Modificar as fichas de actividades
 
 O bloque azul claro co acceso ao PDF modifícase en `const EXTRAESCOLARES`.
 
-As catro liñas de resumo que aparecen debaixo modifícanse en `const ACTIVIDADES`:
+Cada bloque de `const ACTIVIDADES` crea unha ficha tipo cromo:
 
 ```javascript
 {
   visible: true,
-  titulo: "Movemento e deporte",
-  categoria: "Extraescolares",
-  nivel: "Infantil e Primaria",
-  horario: "De luns a venres",
-  lugar: "Centro e instalacións indicadas",
-  prezo: "Ver PDF",
-  descripcion: "Acrobática e parkour, patinaxe, fútbol e multideporte.",
-  estado: "",
-  whatsappMsg: "Ola, quero información sobre as actividades de movemento e deporte.",
+  titulo: "Acrobática + Parkour",
+  categoria: "Extraescolar no centro",
+  imaxe: "assets/images/actividades/acrobatica.jpg",
+  imaxeAlt: "Nena practicando ximnasia",
+  dias: "Luns e martes",
+  horario: "16:00–17:00",
+  idades: "Todas as idades",
+  nota: "De outubro a maio",
+  whatsappMsg: "Ola, quero información sobre Acrobática + Parkour.",
 },
 ```
 
-Para ocultar unha liña, cambia `visible: true` por `visible: false`.
+- Para cambiar unha foto, sobe un JPG, PNG ou WebP a `assets/images/actividades/` e modifica só `imaxe`.
+- Recoméndase unha imaxe horizontal duns 900 × 620 px e menos de 250 KB.
+- Para ocultar unha ficha, cambia `visible: true` por `visible: false`.
+- Os prezos, seguros, descontos e condicións extensas deben quedar no PDF.
 
 ## Cambiar aviso, evento ou fotografías
 
-- Aviso superior: bloque `AVISO`.
+- Aviso superior: bloque `AVISO`. `velocidade` controla os segundos que tarda o texto en cruzar a barra; un número maior fai que se mova máis amodo.
 - Próximo evento: bloque `EVENTO`; os carteis van en `assets/posters/`.
 - Fotografías de “Así o vivimos”: bloque `REDES`; as imaxes locais van en `assets/images/`.
 - Cota e conta bancaria: bloque `SOCIOS`.

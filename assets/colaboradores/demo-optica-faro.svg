@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" role="img" aria-labelledby="title">
+  <title id="title">Óptica Faro, colaborador ficticio de demostración</title>
+  <rect width="320" height="100" rx="18" fill="#eaf7fb"/>
+  <circle cx="48" cy="50" r="28" fill="#2387a3"/>
+  <path d="M29 50c5-9 12-14 19-14s14 5 19 14c-5 9-12 14-19 14s-14-5-19-14Z" fill="none" stroke="#fff" stroke-width="4"/>
+  <circle cx="48" cy="50" r="7" fill="#fff"/>
+  <text x="88" y="49" font-family="Arial, sans-serif" font-size="23" font-weight="800" fill="#12495a">ÓPTICA FARO</text>
+  <text x="89" y="71" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2" fill="#2387a3">MOSTRA · DEMO</text>
+</svg>

@@ -1,5 +1,8 @@
 Sube aquí os logos dos establecementos colaboradores.
 
+Os ficheiros que comezan por demo- son ficticios e só serven para visualizar
+o carrusel. Elimínaos ou ocúltaos en content.js antes de publicar logos reais.
+
 Recomendacións:
 - PNG, WebP, JPG ou SVG.
 - Nome sen espazos nin acentos.

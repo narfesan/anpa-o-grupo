@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" role="img" aria-labelledby="title">
+  <title id="title">Froita Miúda, colaborador ficticio de demostración</title>
+  <rect width="320" height="100" rx="18" fill="#eef8ea"/>
+  <circle cx="48" cy="50" r="28" fill="#4f9b46"/>
+  <path d="M48 37c-10-7-19 1-16 12 2 11 8 19 16 19s14-8 16-19c3-11-6-19-16-12Z" fill="#fff"/>
+  <path d="M49 37c1-8 6-12 13-13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <text x="88" y="49" font-family="Arial, sans-serif" font-size="23" font-weight="800" fill="#285322">FROITA MIÚDA</text>
+  <text x="89" y="71" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2" fill="#4f9b46">MOSTRA · DEMO</text>
+</svg>
