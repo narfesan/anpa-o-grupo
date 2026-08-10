@@ -59,7 +59,7 @@ const CONFIG = {
 //  A franxa superior ocúltase soa se non hai logos visibles.
 // ──────────────────────────────────────────────────────────────
 const COLABORADORES = {
-  visible: true,
+  visible: false,
   // IMPORTANTE: estes logos son ficticios e serven só para ver o deseño.
   // Elimínaos cando subas os colaboradores reais.
   titulo: "Colaboradores · demo",
