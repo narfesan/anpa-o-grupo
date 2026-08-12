@@ -191,7 +191,7 @@ const ACTIVIDADES = [
     visible: true,
     titulo: "Patinaxe · Nivel I",
     categoria: "Extraescolar no centro",
-    imaxe: "assets/images/actividades/patinaxe.jpg",
+    imaxe: "assets/images/actividades/patinaxeI.jpg",
     imaxeAlt: "Nena aprendendo a patinar con proteccións",
     dias: "Xoves",
     horario: "16:00–17:00",
