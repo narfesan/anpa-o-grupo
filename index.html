@@ -314,6 +314,29 @@
                 <input id="socioAlumnado" name="alumnado" type="text" placeholder="Ex.: Uxía Pérez · 3º Primaria" required>
               </div>
 
+              <div class="alta-socio-field">
+  <label for="socioDni">DNI/NIF da persoa responsable</label>
+  <input id="socioDni" name="dni" type="text"
+         maxlength="15"
+         placeholder="Ex.: 12345678Z"
+         required>
+</div>
+
+<div class="alta-socio-field">
+  <label for="socioEmail">Correo electrónico</label>
+  <input id="socioEmail" name="email" type="email"
+         autocomplete="email"
+         placeholder="nome@correo.gal"
+         required>
+</div>
+
+<label for="socioSenEmail"
+       style="display:flex;align-items:center;gap:9px;margin-top:-7px;color:rgba(255,255,255,.86);font-size:.82rem;font-weight:700;cursor:pointer;">
+  <input id="socioSenEmail" name="senEmail" type="checkbox"
+         style="width:18px;height:18px;margin:0;">
+  Non teño correo electrónico
+</label>
+
               <div class="alta-socio-pago">
                 <span class="alta-socio-eyebrow">Cota anual · <strong id="altaSocioCota">20 €</strong></span>
                 <p>Fai unha transferencia á conta da ANPA:</p>
