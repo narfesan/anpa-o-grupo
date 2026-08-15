@@ -399,20 +399,41 @@
         }
       });
     }
+const senEmail = $('socioSenEmail');
+const campoEmail = $('socioEmail');
 
+if (senEmail && campoEmail) {
+  function actualizarEmail() {
+    campoEmail.disabled = senEmail.checked;
+    campoEmail.required = !senEmail.checked;
+
+    if (senEmail.checked) {
+      campoEmail.value = '';
+    }
+  }
+
+  senEmail.addEventListener('change', actualizarEmail);
+  actualizarEmail();
+}
     const form = $('altaSocioForm');
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!form.reportValidity()) return;
 
-        const responsable = $('socioResponsable').value.trim();
-        const alumnado = $('socioAlumnado').value.trim();
+       const responsable = $('socioResponsable').value.trim();
+const dni = $('socioDni').value.trim().toUpperCase();
+const alumnado = $('socioAlumnado').value.trim();
+const correo = senEmail.checked
+  ? 'Non dispón'
+  : campoEmail.value.trim();
         const concepto = (SOCIOS.concepto || 'COTA ANPA') + ' - ' + responsable;
         const msg =
           'Ola, quero dar de alta a miña familia como socia da ANPA Santa Uxía.\n\n' +
           'Persoa responsable: ' + responsable + '\n' +
           'Alumnado e curso: ' + alumnado + '\n' +
+          'DNI/NIF: ' + dni + '\n' +
+'Correo electrónico: ' + correo + '\n' +
           'Cota: ' + (SOCIOS.cotaAnual || '20 €') + ' por familia e curso escolar.\n' +
           'Concepto da transferencia: ' + concepto + '\n\n' +
           'Vou adxuntar nesta conversa o xustificante do pagamento.';
