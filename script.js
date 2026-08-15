@@ -368,15 +368,32 @@
     }
 
     const toggle = $('abrirAltaSocio');
-    const panel = $('altaSocioPanel');
-    if (toggle && panel) {
-      toggle.addEventListener('click', function () {
-        const abrir = panel.hidden;
-        panel.hidden = !abrir;
-        toggle.setAttribute('aria-expanded', String(abrir));
-        if (abrir) $('socioResponsable') && $('socioResponsable').focus();
-      });
+const panel = $('altaSocioPanel');
+
+if (toggle && panel) {
+  toggle.addEventListener('click', function () {
+    const abrir = panel.hidden;
+    panel.hidden = !abrir;
+    toggle.setAttribute('aria-expanded', String(abrir));
+
+    if (abrir) {
+      $('socioResponsable') && $('socioResponsable').focus();
     }
+  });
+}
+
+const accesoSociosPortada = $('abrirAltaSocioPortada');
+
+if (accesoSociosPortada && panel) {
+  accesoSociosPortada.addEventListener('click', function () {
+    panel.hidden = false;
+    accesoSociosPortada.setAttribute('aria-expanded', 'true');
+
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+}
 
     const copiar = $('copiarIban');
     if (copiar && SOCIOS && SOCIOS.iban) {
