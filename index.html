@@ -311,15 +311,53 @@
               <span><b>3</b> Envía</span>
             </div>
 
-            <form id="altaSocioForm" class="alta-socio-form">
-              <div class="alta-socio-field">
-                <label for="socioResponsable">Nome e apelidos da persoa responsable</label>
-                <input id="socioResponsable" name="responsable" type="text" autocomplete="name" required>
-              </div>
-              <div class="alta-socio-field">
-                <label for="socioAlumnado">Nome do alumnado e curso</label>
-                <input id="socioAlumnado" name="alumnado" type="text" placeholder="Ex.: Uxía Pérez · 3º Primaria" required>
-              </div>
+        <form id="altaSocioForm" class="alta-socio-form">
+
+  <fieldset class="alta-socio-field" style="border:0;padding:0;margin:0;">
+    <legend style="font-weight:800;margin-bottom:10px;">
+      Que queres facer?
+    </legend>
+
+    <div style="display:flex;flex-wrap:wrap;gap:16px;">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+        <input type="radio"
+               name="tipoSocio"
+               value="alta"
+               required
+               style="width:18px;height:18px;margin:0;">
+        Nova alta
+      </label>
+
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+        <input type="radio"
+               name="tipoSocio"
+               value="renovacion"
+               required
+               style="width:18px;height:18px;margin:0;">
+        Renovación anual
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="alta-socio-field">
+    <label for="socioResponsable">
+      Nome e apelidos da persoa responsable
+    </label>
+    <input id="socioResponsable"
+           name="responsable"
+           type="text"
+           autocomplete="name"
+           required>
+  </div>
+
+  <div class="alta-socio-field">
+    <label for="socioAlumnado">Nome do alumnado e curso</label>
+    <input id="socioAlumnado"
+           name="alumnado"
+           type="text"
+           placeholder="Ex.: Uxía Pérez · 3º Primaria"
+           required>
+  </div>
 
               <div class="alta-socio-field">
   <label for="socioDni">DNI/NIF da persoa responsable</label>
