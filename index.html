@@ -17,7 +17,7 @@
   <meta name="twitter:card"       content="summary_large_image">
 
   <link rel="icon" href="assets/images/logo-anpa.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=6">
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -162,12 +162,52 @@
   <p>Faltas ti, pola calidade formativa dos nosos fillos e fillas.</p>
 </div>
 
-        <!-- Photo -->
+        <!-- Carrusel da portada -->
         <div class="portada-photo">
           <div class="portada-photo-frame">
-            <img src="assets/images/20211029-O-Grupo-Ribeira.jpg"
-                 alt="CEIP Plurilingüe O Grupo de Ribeira"
-                 loading="eager">
+            <div class="portada-carousel"
+                 id="portadaCarousel"
+                 role="region"
+                 aria-roledescription="carrusel"
+                 aria-label="Novidades da ANPA">
+              <img class="portada-slide is-active"
+                   src="assets/images/portada/portada-1.jpg"
+                   alt="Novidades da páxina web da ANPA Santa Uxía"
+                   loading="eager" decoding="async" aria-hidden="false">
+              <img class="portada-slide"
+                   src="assets/images/portada/portada-2.jpg"
+                   alt="Faite socio ou socia da ANPA Santa Uxía"
+                   loading="eager" decoding="async" aria-hidden="true">
+              <img class="portada-slide"
+                   src="assets/images/portada/portada-3.jpg"
+                   alt="Prazo aberto para comedor e Plan Madruga"
+                   loading="lazy" decoding="async" aria-hidden="true">
+              <img class="portada-slide"
+                   src="assets/images/portada/portada-4.jpg"
+                   alt="Anpiña, mascota da ANPA do CEIP O Grupo"
+                   loading="lazy" decoding="async" aria-hidden="true">
+              <img class="portada-slide"
+                   src="assets/images/portada/portada-5.jpg"
+                   alt="Logotipo da ANPA Santa Uxía"
+                   loading="lazy" decoding="async" aria-hidden="true">
+
+              <button class="portada-carousel-arrow portada-carousel-arrow--prev"
+                      id="portadaPrev"
+                      type="button"
+                      aria-label="Ver imaxe anterior">‹</button>
+              <button class="portada-carousel-arrow portada-carousel-arrow--next"
+                      id="portadaNext"
+                      type="button"
+                      aria-label="Ver imaxe seguinte">›</button>
+
+              <div class="portada-carousel-dots" aria-label="Seleccionar imaxe">
+                <button class="portada-carousel-dot is-active" type="button" aria-label="Ver imaxe 1" aria-current="true"></button>
+                <button class="portada-carousel-dot" type="button" aria-label="Ver imaxe 2" aria-current="false"></button>
+                <button class="portada-carousel-dot" type="button" aria-label="Ver imaxe 3" aria-current="false"></button>
+                <button class="portada-carousel-dot" type="button" aria-label="Ver imaxe 4" aria-current="false"></button>
+                <button class="portada-carousel-dot" type="button" aria-label="Ver imaxe 5" aria-current="false"></button>
+              </div>
+            </div>
           </div>
           <div class="portada-photo-badge" aria-hidden="true">
             <strong>20 €</strong>
@@ -628,7 +668,7 @@
   <span class="floating-wa-label">Falar coa ANPA</span>
 </a>
 
-<script src="content.js?v=5"></script>
-<script src="script.js?v=4"></script>
+<script src="content.js?v=6"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

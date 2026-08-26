@@ -137,6 +137,138 @@
     });
   }
 
+  // ── CARRUSEL DA PORTADA ──────────────────────────────────────
+  function initPortadaCarousel() {
+    const carousel = $('portadaCarousel');
+    if (!carousel) return;
+
+    let slides = Array.prototype.slice.call(
+      carousel.querySelectorAll('.portada-slide')
+    );
+    let dots = Array.prototype.slice.call(
+      carousel.querySelectorAll('.portada-carousel-dot')
+    );
+    const dotsContainer = carousel.querySelector('.portada-carousel-dots');
+    const prev = $('portadaPrev');
+    const next = $('portadaNext');
+    const reduceMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!slides.length) return;
+
+    let current = 0;
+    let timer = null;
+    const interval = 4000;
+
+    function showSlide(position) {
+      if (!slides.length) return;
+      current = (position + slides.length) % slides.length;
+
+      slides.forEach(function (slide, index) {
+        const active = index === current;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+
+      dots.forEach(function (dot, index) {
+        const active = index === current;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-current', String(active));
+      });
+    }
+
+    function stopCarousel() {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    }
+
+    function startCarousel() {
+      stopCarousel();
+      if (reduceMotion || slides.length < 2 || document.hidden) return;
+      timer = window.setInterval(function () {
+        showSlide(current + 1);
+      }, interval);
+    }
+
+    function updateControls() {
+      const multiple = slides.length > 1;
+      if (prev) prev.hidden = !multiple;
+      if (next) next.hidden = !multiple;
+      if (dotsContainer) dotsContainer.hidden = !multiple;
+    }
+
+    function removeUnavailableSlide(slide) {
+      const position = slides.indexOf(slide);
+      if (position === -1) return;
+
+      slide.remove();
+      if (dots[position]) dots[position].remove();
+
+      slides = Array.prototype.slice.call(
+        carousel.querySelectorAll('.portada-slide')
+      );
+      dots = Array.prototype.slice.call(
+        carousel.querySelectorAll('.portada-carousel-dot')
+      );
+
+      if (current >= slides.length) current = 0;
+      updateControls();
+      showSlide(current);
+      startCarousel();
+    }
+
+    function changeManually(position) {
+      showSlide(position);
+      startCarousel();
+    }
+
+    if (prev) {
+      prev.addEventListener('click', function () {
+        changeManually(current - 1);
+      });
+    }
+
+    if (next) {
+      next.addEventListener('click', function () {
+        changeManually(current + 1);
+      });
+    }
+
+    if (dotsContainer) {
+      dotsContainer.addEventListener('click', function (event) {
+        const dot = event.target.closest('.portada-carousel-dot');
+        if (!dot || !dotsContainer.contains(dot)) return;
+        changeManually(dots.indexOf(dot));
+      });
+    }
+
+    slides.slice().forEach(function (slide) {
+      slide.addEventListener('error', function () {
+        removeUnavailableSlide(slide);
+      });
+
+      if (slide.complete && !slide.naturalWidth) {
+        removeUnavailableSlide(slide);
+      }
+    });
+
+    carousel.addEventListener('mouseenter', stopCarousel);
+    carousel.addEventListener('mouseleave', startCarousel);
+    carousel.addEventListener('focusin', stopCarousel);
+    carousel.addEventListener('focusout', function (event) {
+      if (!carousel.contains(event.relatedTarget)) startCarousel();
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopCarousel();
+      else startCarousel();
+    });
+
+    showSlide(0);
+    updateControls();
+    startCarousel();
+  }
+
   // ── ACTIVIDADES ──────────────────────────────────────────────
   function estadoClass(e) {
     const m = {
@@ -604,6 +736,7 @@ const msg =
     renderColaboradores();
     renderAviso();
     initPortadaBtns();
+    initPortadaCarousel();
     renderExtraescolares();
     renderActividades();
     renderEvento();
