@@ -438,22 +438,40 @@ if (senEmail && campoEmail) {
         e.preventDefault();
         if (!form.reportValidity()) return;
 
-       const responsable = $('socioResponsable').value.trim();
+       const tipoSeleccionado =
+  document.querySelector('input[name="tipoSocio"]:checked');
+
+if (!tipoSeleccionado) return;
+
+const esRenovacion = tipoSeleccionado.value === 'renovacion';
+
+const tituloTramite = esRenovacion
+  ? 'RENOVACIÓN ANUAL'
+  : 'NOVA ALTA';
+
+const textoTramite = esRenovacion
+  ? 'Ola, quero renovar a condición de socia da miña familia na ANPA Santa Uxía.'
+  : 'Ola, quero dar de alta a miña familia como socia da ANPA Santa Uxía.';
+
+const responsable = $('socioResponsable').value.trim();
 const dni = $('socioDni').value.trim().toUpperCase();
 const alumnado = $('socioAlumnado').value.trim();
 const correo = senEmail.checked
   ? 'Non dispón'
   : campoEmail.value.trim();
-        const concepto = (SOCIOS.concepto || 'COTA ANPA') + ' - ' + responsable;
-        const msg =
-          'Ola, quero dar de alta a miña familia como socia da ANPA Santa Uxía.\n\n' +
-          'Persoa responsable: ' + responsable + '\n' +
-          'Alumnado e curso: ' + alumnado + '\n' +
-          'DNI/NIF: ' + dni + '\n' +
-'Correo electrónico: ' + correo + '\n' +
-          'Cota: ' + (SOCIOS.cotaAnual || '20 €') + ' por familia e curso escolar.\n' +
-          'Concepto da transferencia: ' + concepto + '\n\n' +
-          'Vou adxuntar nesta conversa o xustificante do pagamento.';
+
+const concepto = (SOCIOS.concepto || 'COTA ANPA') + ' - ' + responsable;
+
+const msg =
+  '*TRÁMITE: ' + tituloTramite + '*\n\n' +
+  textoTramite + '\n\n' +
+  'Persoa responsable: ' + responsable + '\n' +
+  'Alumnado e curso: ' + alumnado + '\n' +
+  'DNI/NIF: ' + dni + '\n' +
+  'Correo electrónico: ' + correo + '\n' +
+  'Cota: ' + (SOCIOS.cotaAnual || '20 €') + ' por familia e curso escolar.\n' +
+  'Concepto da transferencia: ' + concepto + '\n\n' +
+  'Vou adxuntar nesta conversa o xustificante do pagamento.';
 
         window.open(waURL(msg), '_blank', 'noopener,noreferrer');
       });
