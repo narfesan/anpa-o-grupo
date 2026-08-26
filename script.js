@@ -394,6 +394,30 @@ if (accesoSociosPortada && panel) {
     }
   });
 }
+    const accesoRenovacionPortada = $('abrirRenovacionPortada');
+
+if (accesoRenovacionPortada && panel) {
+  accesoRenovacionPortada.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    panel.hidden = false;
+
+    const renovacion = document.querySelector(
+      'input[name="tipoSocio"][value="renovacion"]'
+    );
+
+    if (renovacion) renovacion.checked = true;
+
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    $('socios').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+}
 
     const copiar = $('copiarIban');
     if (copiar && SOCIOS && SOCIOS.iban) {
