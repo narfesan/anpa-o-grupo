@@ -110,7 +110,7 @@ const COLABORADORES = {
 // ──────────────────────────────────────────────────────────────
 const AVISO = {
   visible: true,
-  texto: "Xa podes consultar os horarios e prezos das actividades extraescolares do curso 2026–2027.",
+  texto: "Aberto o prazo de inscrición para o comedor e o Plan Madruga do curso 2026–2027.",
   velocidade: 18, // Segundos que tarda o texto en cruzar a franxa
 };
 
@@ -321,15 +321,15 @@ const EVENTO = {
 const SERVIZOS = [
   {
     visible: true,
-    titulo:      "Madrugadores",
-    descripcion: "Información sobre horarios, condicións e prazas.",
-    whatsappMsg: "Ola, quero información sobre o servizo de madrugadores.",
+    titulo:      "Comedor escolar · prazo aberto",
+    descripcion: "Dende o 9 de setembro, de 14:00 a 16:00. Menús saudables e adaptados ás necesidades específicas, con monitores de gran experiencia.",
+    whatsappMsg: "Ola, quero información e realizar a inscrición no servizo de comedor do curso 2026–2027.",
   },
   {
     visible: true,
-    titulo:      "Comedor escolar",
-    descripcion: "Información sobre horarios, funcionamento e prazas.",
-    whatsappMsg: "Ola, quero información sobre o comedor escolar.",
+    titulo:      "Plan Madruga · prazo aberto",
+    descripcion: "De 8:00 a 9:00, sempre que se cubra o número mínimo de alumnado necesario para prestar o servizo.",
+    whatsappMsg: "Ola, quero información e realizar a inscrición no Plan Madruga do curso 2026–2027.",
   },
   {
     visible: true,
