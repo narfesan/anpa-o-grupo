@@ -593,9 +593,10 @@ if (senEmail && campoEmail) {
     const panelSegundo = $('segundoResponsablePanel');
     const segundoNome = $('socioResponsable2');
     const segundoDni = $('socioDni2');
+    const segundoTelefono = $('socioTelefono2');
     const segundoEmail = $('socioEmail2');
 
-    if (engadirSegundo && panelSegundo && segundoNome && segundoDni && segundoEmail) {
+    if (engadirSegundo && panelSegundo && segundoNome && segundoDni && segundoTelefono && segundoEmail) {
       function actualizarSegundoResponsable() {
         const engadir = engadirSegundo.checked;
 
@@ -604,13 +605,16 @@ if (senEmail && campoEmail) {
 
         segundoNome.disabled = !engadir;
         segundoDni.disabled = !engadir;
+        segundoTelefono.disabled = !engadir;
         segundoEmail.disabled = !engadir;
         segundoNome.required = engadir;
         segundoDni.required = engadir;
+        segundoTelefono.required = engadir;
 
         if (!engadir) {
           segundoNome.value = '';
           segundoDni.value = '';
+          segundoTelefono.value = '';
           segundoEmail.value = '';
         }
       }
@@ -654,6 +658,7 @@ const correo = senEmail.checked
 const tenSegundoResponsable = engadirSegundo && engadirSegundo.checked;
 const segundoNomeValor = tenSegundoResponsable ? segundoNome.value.trim() : '';
 const segundoDniValor = tenSegundoResponsable ? segundoDni.value.trim().toUpperCase() : '';
+const segundoTelefonoValor = tenSegundoResponsable ? segundoTelefono.value.trim() : '';
 const segundoEmailValor = tenSegundoResponsable
   ? (segundoEmail.value.trim() || 'Non indicado')
   : '';
@@ -662,6 +667,7 @@ const bloqueSegundoResponsable = tenSegundoResponsable
   ? '\n\n*SEGUNDA PERSOA RESPONSABLE*\n' +
     'Nome e apelidos: ' + segundoNomeValor + '\n' +
     'DNI/NIF: ' + segundoDniValor + '\n' +
+    'Teléfono: ' + segundoTelefonoValor + '\n' +
     'Correo electrónico: ' + segundoEmailValor
   : '';
 
