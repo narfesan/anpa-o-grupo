@@ -17,7 +17,7 @@
   <meta name="twitter:card"       content="summary_large_image">
 
   <link rel="icon" href="assets/images/logo-anpa.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -418,6 +418,18 @@
 </div>
 
 <div class="alta-socio-field">
+  <label for="socioTelefono">Teléfono da persoa responsable</label>
+  <input id="socioTelefono"
+         name="telefono"
+         type="tel"
+         autocomplete="section-responsable1 tel"
+         inputmode="tel"
+         maxlength="20"
+         placeholder="Ex.: 600 000 000"
+         required>
+</div>
+
+<div class="alta-socio-field">
   <label for="socioEmail">Correo electrónico</label>
   <input id="socioEmail" name="email" type="email"
          autocomplete="email"
@@ -451,7 +463,7 @@
     <p class="segundo-responsable-title">Datos da segunda persoa responsable</p>
 
     <div class="segundo-responsable-grid">
-      <div class="alta-socio-field">
+      <div class="alta-socio-field segundo-responsable-nome">
         <label for="socioResponsable2">Nome e apelidos</label>
         <input id="socioResponsable2"
                name="responsable2"
@@ -470,6 +482,18 @@
                disabled>
       </div>
 
+      <div class="alta-socio-field">
+        <label for="socioTelefono2">Teléfono</label>
+        <input id="socioTelefono2"
+               name="telefono2"
+               type="tel"
+               autocomplete="section-responsable2 tel"
+               inputmode="tel"
+               maxlength="20"
+               placeholder="Ex.: 600 000 000"
+               disabled>
+      </div>
+
       <div class="alta-socio-field segundo-responsable-email">
         <label for="socioEmail2">Correo electrónico <span>(opcional)</span></label>
         <input id="socioEmail2"
@@ -481,16 +505,6 @@
       </div>
     </div>
   </div>
-</div>
-          <div class="alta-socio-field">
-  <label for="socioTelefono2">Teléfono</label>
-  <input id="socioTelefono2"
-         name="telefono2"
-         type="tel"
-         autocomplete="section-responsable2 tel"
-         inputmode="tel"
-         placeholder="Ex.: 600 000 000"
-         disabled>
 </div>
 
               <div class="alta-socio-pago">
@@ -730,6 +744,6 @@
 </a>
 
 <script src="content.js?v=6"></script>
-<script src="script.js?v=7"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>

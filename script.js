@@ -650,6 +650,7 @@ const textoTramite = esRenovacion
 
 const responsable = $('socioResponsable').value.trim();
 const dni = $('socioDni').value.trim().toUpperCase();
+const telefono = $('socioTelefono').value.trim();
 const alumnado = $('socioAlumnado').value.trim();
 const correo = senEmail.checked
   ? 'Non dispón'
@@ -679,6 +680,7 @@ const msg =
   '*PRIMEIRA PERSOA RESPONSABLE*\n' +
   'Nome e apelidos: ' + responsable + '\n' +
   'DNI/NIF: ' + dni + '\n' +
+  'Teléfono: ' + telefono + '\n' +
   'Correo electrónico: ' + correo +
   bloqueSegundoResponsable + '\n\n' +
   '*ALUMNADO*\n' +

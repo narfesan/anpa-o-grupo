@@ -1050,23 +1050,23 @@ ul   { list-style: none; }
   align-items: flex-start;
   gap: 11px;
   padding: 14px 15px;
-  border: 1px solid rgba(255,255,255,.18);
+  border: 1px solid rgba(72,218,125,.55);
   border-radius: var(--radius);
-  background: rgba(255,255,255,.07);
+  background: rgba(37,211,102,.08);
   color: #fff;
   cursor: pointer;
   transition: background var(--trans), border-color var(--trans);
 }
 .segundo-responsable-toggle:hover {
-  background: rgba(255,255,255,.11);
-  border-color: rgba(255,255,255,.28);
+  background: rgba(37,211,102,.13);
+  border-color: rgba(72,218,125,.82);
 }
 .segundo-responsable-toggle input {
   flex: 0 0 auto;
   width: 19px;
   height: 19px;
   margin: 2px 0 0;
-  accent-color: var(--accent);
+  accent-color: var(--green-wa);
   cursor: pointer;
 }
 .segundo-responsable-toggle strong {
@@ -1083,23 +1083,26 @@ ul   { list-style: none; }
 }
 .segundo-responsable-panel {
   margin-top: 10px;
-  padding: 16px;
-  border: 1px solid rgba(255,255,255,.14);
+  padding: 18px;
+  border: 1px solid rgba(72,218,125,.72);
+  border-left: 5px solid var(--green-wa);
   border-radius: var(--radius);
-  background: rgba(0,0,0,.11);
+  background: linear-gradient(145deg, rgba(37,211,102,.18), rgba(26,171,83,.08));
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
 }
 .segundo-responsable-panel[hidden] { display: none; }
 .segundo-responsable-title {
   margin: 0 0 13px !important;
-  color: #fff !important;
-  font-size: .78rem !important;
+  color: #baf7ce !important;
+  font-size: .86rem !important;
   font-weight: 800;
 }
 .segundo-responsable-grid {
   display: grid;
-  grid-template-columns: 1.35fr .8fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
+.segundo-responsable-nome,
 .segundo-responsable-email { grid-column: 1 / -1; }
 .segundo-responsable-email label span {
   color: rgba(255,255,255,.58);
@@ -1137,6 +1140,7 @@ ul   { list-style: none; }
   .alta-socio-iban-row .btn { width: 100%; }
   .alta-socio-submit { width: 100%; }
   .segundo-responsable-grid { grid-template-columns: 1fr; }
+  .segundo-responsable-nome,
   .segundo-responsable-email { grid-column: auto; }
 }
 
