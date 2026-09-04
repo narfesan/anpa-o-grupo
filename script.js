@@ -588,6 +588,41 @@ if (senEmail && campoEmail) {
   senEmail.addEventListener('change', actualizarEmail);
   actualizarEmail();
 }
+
+    const engadirSegundo = $('engadirSegundoResponsable');
+    const panelSegundo = $('segundoResponsablePanel');
+    const segundoNome = $('socioResponsable2');
+    const segundoDni = $('socioDni2');
+    const segundoEmail = $('socioEmail2');
+
+    if (engadirSegundo && panelSegundo && segundoNome && segundoDni && segundoEmail) {
+      function actualizarSegundoResponsable() {
+        const engadir = engadirSegundo.checked;
+
+        panelSegundo.hidden = !engadir;
+        engadirSegundo.setAttribute('aria-expanded', String(engadir));
+
+        segundoNome.disabled = !engadir;
+        segundoDni.disabled = !engadir;
+        segundoEmail.disabled = !engadir;
+        segundoNome.required = engadir;
+        segundoDni.required = engadir;
+
+        if (!engadir) {
+          segundoNome.value = '';
+          segundoDni.value = '';
+          segundoEmail.value = '';
+        }
+      }
+
+      engadirSegundo.addEventListener('change', function () {
+        actualizarSegundoResponsable();
+        if (engadirSegundo.checked) segundoNome.focus();
+      });
+
+      actualizarSegundoResponsable();
+    }
+
     const form = $('altaSocioForm');
     if (form) {
       form.addEventListener('submit', function (e) {
@@ -616,15 +651,32 @@ const correo = senEmail.checked
   ? 'Non dispón'
   : campoEmail.value.trim();
 
+const tenSegundoResponsable = engadirSegundo && engadirSegundo.checked;
+const segundoNomeValor = tenSegundoResponsable ? segundoNome.value.trim() : '';
+const segundoDniValor = tenSegundoResponsable ? segundoDni.value.trim().toUpperCase() : '';
+const segundoEmailValor = tenSegundoResponsable
+  ? (segundoEmail.value.trim() || 'Non indicado')
+  : '';
+
+const bloqueSegundoResponsable = tenSegundoResponsable
+  ? '\n\n*SEGUNDA PERSOA RESPONSABLE*\n' +
+    'Nome e apelidos: ' + segundoNomeValor + '\n' +
+    'DNI/NIF: ' + segundoDniValor + '\n' +
+    'Correo electrónico: ' + segundoEmailValor
+  : '';
+
 const concepto = (SOCIOS.concepto || 'COTA ANPA') + ' - ' + responsable;
 
 const msg =
   '*TRÁMITE: ' + tituloTramite + '*\n\n' +
   textoTramite + '\n\n' +
-  'Persoa responsable: ' + responsable + '\n' +
-  'Alumnado e curso: ' + alumnado + '\n' +
+  '*PRIMEIRA PERSOA RESPONSABLE*\n' +
+  'Nome e apelidos: ' + responsable + '\n' +
   'DNI/NIF: ' + dni + '\n' +
-  'Correo electrónico: ' + correo + '\n' +
+  'Correo electrónico: ' + correo +
+  bloqueSegundoResponsable + '\n\n' +
+  '*ALUMNADO*\n' +
+  alumnado + '\n\n' +
   'Cota: ' + (SOCIOS.cotaAnual || '20 €') + ' por familia e curso escolar.\n' +
   'Concepto da transferencia: ' + concepto + '\n\n' +
   'Vou adxuntar nesta conversa o xustificante do pagamento.';

@@ -17,7 +17,7 @@
   <meta name="twitter:card"       content="summary_large_image">
 
   <link rel="icon" href="assets/images/logo-anpa.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -432,6 +432,57 @@
   Non teño correo electrónico
 </label>
 
+<div class="segundo-responsable">
+  <label class="segundo-responsable-toggle" for="engadirSegundoResponsable">
+    <input id="engadirSegundoResponsable"
+           name="engadirSegundoResponsable"
+           type="checkbox"
+           aria-controls="segundoResponsablePanel"
+           aria-expanded="false">
+    <span>
+      <strong>Queres engadir unha segunda persoa responsable?</strong>
+      <small>Acreditamos un máximo de dúas persoas adultas por familia.</small>
+    </span>
+  </label>
+
+  <div class="segundo-responsable-panel"
+       id="segundoResponsablePanel"
+       hidden>
+    <p class="segundo-responsable-title">Datos da segunda persoa responsable</p>
+
+    <div class="segundo-responsable-grid">
+      <div class="alta-socio-field">
+        <label for="socioResponsable2">Nome e apelidos</label>
+        <input id="socioResponsable2"
+               name="responsable2"
+               type="text"
+               autocomplete="section-responsable2 name"
+               disabled>
+      </div>
+
+      <div class="alta-socio-field">
+        <label for="socioDni2">DNI/NIF</label>
+        <input id="socioDni2"
+               name="dni2"
+               type="text"
+               maxlength="15"
+               placeholder="Ex.: 12345678Z"
+               disabled>
+      </div>
+
+      <div class="alta-socio-field segundo-responsable-email">
+        <label for="socioEmail2">Correo electrónico <span>(opcional)</span></label>
+        <input id="socioEmail2"
+               name="email2"
+               type="email"
+               autocomplete="section-responsable2 email"
+               placeholder="nome@correo.gal"
+               disabled>
+      </div>
+    </div>
+  </div>
+</div>
+
               <div class="alta-socio-pago">
                 <span class="alta-socio-eyebrow">Cota anual · <strong id="altaSocioCota">20 €</strong></span>
                 <p>Fai unha transferencia á conta da ANPA:</p>
@@ -669,6 +720,6 @@
 </a>
 
 <script src="content.js?v=6"></script>
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>

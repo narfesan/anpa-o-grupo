@@ -1042,6 +1042,69 @@ ul   { list-style: none; }
   outline: 3px solid rgba(255,255,255,.22);
   border-color: #fff;
 }
+.segundo-responsable {
+  margin-top: 2px;
+}
+.segundo-responsable-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 14px 15px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--trans), border-color var(--trans);
+}
+.segundo-responsable-toggle:hover {
+  background: rgba(255,255,255,.11);
+  border-color: rgba(255,255,255,.28);
+}
+.segundo-responsable-toggle input {
+  flex: 0 0 auto;
+  width: 19px;
+  height: 19px;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.segundo-responsable-toggle strong {
+  display: block;
+  font-size: .86rem;
+  line-height: 1.4;
+}
+.segundo-responsable-toggle small {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255,255,255,.65);
+  font-size: .73rem;
+  line-height: 1.45;
+}
+.segundo-responsable-panel {
+  margin-top: 10px;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius);
+  background: rgba(0,0,0,.11);
+}
+.segundo-responsable-panel[hidden] { display: none; }
+.segundo-responsable-title {
+  margin: 0 0 13px !important;
+  color: #fff !important;
+  font-size: .78rem !important;
+  font-weight: 800;
+}
+.segundo-responsable-grid {
+  display: grid;
+  grid-template-columns: 1.35fr .8fr;
+  gap: 14px;
+}
+.segundo-responsable-email { grid-column: 1 / -1; }
+.segundo-responsable-email label span {
+  color: rgba(255,255,255,.58);
+  font-weight: 500;
+}
 .alta-socio-pago {
   margin-top: 2px; padding: 16px;
   border-radius: var(--radius);
@@ -1073,6 +1136,8 @@ ul   { list-style: none; }
   .alta-socio-iban-row code { width: 100%; overflow-wrap: anywhere; }
   .alta-socio-iban-row .btn { width: 100%; }
   .alta-socio-submit { width: 100%; }
+  .segundo-responsable-grid { grid-template-columns: 1fr; }
+  .segundo-responsable-email { grid-column: auto; }
 }
 
 /* ─── CONTACTO ───────────────────────────────────────────────── */
