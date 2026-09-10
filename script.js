@@ -137,6 +137,38 @@
     });
   }
 
+  // ── CONTADOR PÚBLICO DE FAMILIAS ────────────────────────────
+  function initContadorFamilias() {
+    const contador = $('contadorFamilias');
+    if (!contador || typeof window.fetch !== 'function') return;
+
+    const endpoint = 'https://socios.anpaogrupo.es/api/public/familias';
+    const cadaCincoMinutos = 5 * 60 * 1000;
+
+    async function actualizarContador() {
+      try {
+        const resposta = await window.fetch(endpoint, {
+          method: 'GET',
+          headers: { Accept: 'application/json' }
+        });
+        if (!resposta.ok) return;
+
+        const datos = await resposta.json();
+        if (!datos || datos.ok !== true) return;
+
+        const familias = datos.familias;
+        if (!Number.isSafeInteger(familias) || familias < 0) return;
+
+        contador.textContent = familias + (familias === 1 ? ' familia' : ' familias');
+      } catch (erro) {
+        // Mantén visible a cifra escrita no HTML se a consulta non responde.
+      }
+    }
+
+    actualizarContador();
+    window.setInterval(actualizarContador, cadaCincoMinutos);
+  }
+
   // ── CARRUSEL DA PORTADA ──────────────────────────────────────
   function initPortadaCarousel() {
     const carousel = $('portadaCarousel');
@@ -796,6 +828,7 @@ const msg =
     renderColaboradores();
     renderAviso();
     initPortadaBtns();
+    initContadorFamilias();
     initPortadaCarousel();
     renderExtraescolares();
     renderActividades();
