@@ -17,9 +17,9 @@
     descripcion: 'Yincana, música e diversión para dar a benvida ao novo curso. Teremos merenda. Recoméndase traer gafas de piscina e camiseta branca.',
     prazo: 'Preinscrición ata o 15 de setembro ás 23:59.',
     aviso: 'Actividade para familias socias da ANPA. Podes preinscribirte sen ter recibido o carné. A ANPA comprobará a condición de familia socia antes de confirmar a participación.',
-    cartel: 'holi-fun-2026.png',
-    cartelAncho: 1086,
-    cartelAlto: 1448,
+    cartel: 'assets/posters/holi-fun-2026.jpg',
+    cartelAncho: 1089,
+    cartelAlto: 1444,
     inscricion: 'https://socios.anpaogrupo.es/eventos?evento=3',
     boton: 'Preinscribirse ao evento'
   });
